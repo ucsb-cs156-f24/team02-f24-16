@@ -7,10 +7,6 @@ const helpRequestFixtures = {
       requestTime: "2024-11-04T12:45:00",
       explanation: "Needs_help_with_jpa03",
       solved: false
-      /*
-      ttnguyen@DESKTOP-D6S0209:~/cs156/team02-f24-16$ id , 
-      requesteremail, teamid, table, requesttime, explanation, solved
-      */
     },
     threeRequests: [
       {
@@ -21,7 +17,6 @@ const helpRequestFixtures = {
         requestTime: "2024-11-04T12:45:00",
         explanation: "Needs_help_with_jpa03",
         solved: true,
-        
       },
       {
         id: 2,
