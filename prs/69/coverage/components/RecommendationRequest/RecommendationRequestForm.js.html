@@ -248,7 +248,10 @@
 <a name='L183'></a><a href='#L183'>183</a>
 <a name='L184'></a><a href='#L184'>184</a>
 <a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,6 +287,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -461,10 +467,10 @@ function RecommendationRequestForm({
   // Stryker restore Regex
 &nbsp;
   // Stryker disable Regex
-  const email_regex = 
-  /^(([^&lt;&gt;()[\]\\.,;:\s@"]+(\.[^&lt;&gt;()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+  const email_regex =
+    /^(([^&lt;&gt;()[\]\\.,;:\s@"]+(\.[^&lt;&gt;()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
   // Stryker restore Regex
-  
+&nbsp;
   // Stryker disable next-line all
   //const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 &nbsp;
@@ -495,9 +501,9 @@ function RecommendationRequestForm({
               id="requesterEmail"
               type="text"
               isInvalid={Boolean(errors.requesterEmail)}
-              {...register("requesterEmail",{
+              {...register("requesterEmail", {
                 required: true,
-                pattern: email_regex
+                pattern: email_regex,
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -515,9 +521,9 @@ function RecommendationRequestForm({
               id="professorEmail"
               type="text"
               isInvalid={Boolean(errors.professorEmail)}
-              {...register("professorEmail",{
+              {...register("professorEmail", {
                 required: true,
-                pattern: email_regex
+                pattern: email_regex,
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
@@ -535,19 +541,21 @@ function RecommendationRequestForm({
               id=""
               type="text"
               isInvalid={Boolean(errors.explanation)}
-              {...register("explanation",{
-                required: "Explanation is required"
+              {...register("explanation", {
+                required: "Explanation is required",
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-            {errors.explanation?.message}
+              {errors.explanation?.message}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
 &nbsp;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="dateRequested"&gt;Date Requested (iso format)&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="dateRequested"&gt;
+              Date Requested (iso format)
+            &lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="RecommendationRequestForm-dateRequested"
               id="dateRequested"
@@ -565,7 +573,9 @@ function RecommendationRequestForm({
         &lt;/Col&gt;
         &lt;Col&gt;
           &lt;Form.Group className="mb-3"&gt;
-            &lt;Form.Label htmlFor="dateNeeded"&gt;Date Needed (iso format)&lt;/Form.Label&gt;
+            &lt;Form.Label htmlFor="dateNeeded"&gt;
+              Date Needed (iso format)
+            &lt;/Form.Label&gt;
             &lt;Form.Control
               data-testid="RecommendationRequestForm-dateNeeded"
               id="dateNeeded"
@@ -577,7 +587,7 @@ function RecommendationRequestForm({
               })}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-            {errors.dateNeeded?.message}
+              {errors.dateNeeded?.message}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -588,12 +598,11 @@ function RecommendationRequestForm({
               data-testid="RecommendationRequestForm-done"
               id="done"
               type="checkbox"
-              
               isInvalid={Boolean(errors.done)}
               {...register("done")}
             /&gt;
             &lt;Form.Control.Feedback type="invalid"&gt;
-            {errors.done?.message}
+              {errors.done?.message}
             &lt;/Form.Control.Feedback&gt;
           &lt;/Form.Group&gt;
         &lt;/Col&gt;
@@ -625,7 +634,7 @@ export default RecommendationRequestForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-05T08:45:43.027Z
+                at 2024-11-05T08:50:43.317Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
