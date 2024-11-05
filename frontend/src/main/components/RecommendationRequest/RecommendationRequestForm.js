@@ -26,10 +26,10 @@ function RecommendationRequestForm({
   // Stryker restore Regex
 
   // Stryker disable Regex
-  const email_regex = 
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+  const email_regex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
   // Stryker restore Regex
-  
+
   // Stryker disable next-line all
   //const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 
@@ -60,9 +60,9 @@ function RecommendationRequestForm({
               id="requesterEmail"
               type="text"
               isInvalid={Boolean(errors.requesterEmail)}
-              {...register("requesterEmail",{
+              {...register("requesterEmail", {
                 required: true,
-                pattern: email_regex
+                pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -80,9 +80,9 @@ function RecommendationRequestForm({
               id="professorEmail"
               type="text"
               isInvalid={Boolean(errors.professorEmail)}
-              {...register("professorEmail",{
+              {...register("professorEmail", {
                 required: true,
-                pattern: email_regex
+                pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -100,19 +100,21 @@ function RecommendationRequestForm({
               id=""
               type="text"
               isInvalid={Boolean(errors.explanation)}
-              {...register("explanation",{
-                required: "Explanation is required"
+              {...register("explanation", {
+                required: "Explanation is required",
               })}
             />
             <Form.Control.Feedback type="invalid">
-            {errors.explanation?.message}
+              {errors.explanation?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateRequested">Date Requested (iso format)</Form.Label>
+            <Form.Label htmlFor="dateRequested">
+              Date Requested (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="RecommendationRequestForm-dateRequested"
               id="dateRequested"
@@ -130,7 +132,9 @@ function RecommendationRequestForm({
         </Col>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateNeeded">Date Needed (iso format)</Form.Label>
+            <Form.Label htmlFor="dateNeeded">
+              Date Needed (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="RecommendationRequestForm-dateNeeded"
               id="dateNeeded"
@@ -142,7 +146,7 @@ function RecommendationRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-            {errors.dateNeeded?.message}
+              {errors.dateNeeded?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -153,12 +157,11 @@ function RecommendationRequestForm({
               data-testid="RecommendationRequestForm-done"
               id="done"
               type="checkbox"
-              
               isInvalid={Boolean(errors.done)}
               {...register("done")}
             />
             <Form.Control.Feedback type="invalid">
-            {errors.done?.message}
+              {errors.done?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
