@@ -1,6 +1,6 @@
 import React from "react";
 import HelpRequestTable from "main/components/HelpRequest/HelpRequestTable";
-import { helpRequestFixtures } from "fixtures/HelpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import { http, HttpResponse } from "msw";
 
