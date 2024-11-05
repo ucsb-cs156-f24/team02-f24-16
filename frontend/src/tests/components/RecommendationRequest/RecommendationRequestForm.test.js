@@ -15,7 +15,7 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm />
-      </Router>
+      </Router>,
     );
     await screen.findByText(/Requester Email/);
     await screen.findByText(/Create/);
@@ -29,7 +29,7 @@ describe("RecommendationRequestForm tests", () => {
             recommendationRequestFixtures.oneRecommendationRequest
           }
         />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId(/RecommendationRequestForm-id/);
     expect(screen.getByText(/Id/)).toBeInTheDocument();
@@ -40,23 +40,23 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId("RecommendationRequestForm-requesterEmail");
     const localDateTimeFieldA = screen.getByTestId(
-      "RecommendationRequestForm-dateRequested"
+      "RecommendationRequestForm-dateRequested",
     );
     const localDateTimeFieldB = screen.getByTestId(
-      "RecommendationRequestForm-dateNeeded"
+      "RecommendationRequestForm-dateNeeded",
     );
     const professorEmail = screen.getByTestId(
-      "RecommendationRequestForm-professorEmail"
+      "RecommendationRequestForm-professorEmail",
     );
     const requesterEmail = screen.getByTestId(
-      "RecommendationRequestForm-requesterEmail"
+      "RecommendationRequestForm-requesterEmail",
     );
     const explanation = screen.getByTestId(
-      "RecommendationRequestForm-explanation"
+      "RecommendationRequestForm-explanation",
     );
 
     const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
@@ -74,13 +74,13 @@ describe("RecommendationRequestForm tests", () => {
     expect(screen.getByText(/professorEmail is required./)).toBeInTheDocument();
     expect(
       screen.getByText(
-        /requesterEmail must be in the format <username>@<domain>.<com>/
-      )
+        /requesterEmail must be in the format <username>@<domain>.<com>/,
+      ),
     ).toBeInTheDocument();
     expect(
       screen.getByText(
-        /professorEmail must be in the format <username>@<domain>.<com>/
-      )
+        /professorEmail must be in the format <username>@<domain>.<com>/,
+      ),
     ).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
   });
@@ -89,7 +89,7 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId("RecommendationRequestForm-submit");
     const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
@@ -102,17 +102,17 @@ describe("RecommendationRequestForm tests", () => {
     expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
     expect(
       screen.queryByText(
-        /requesterEmail must be in the format <username>@<domain>.<com>/
-      )
+        /requesterEmail must be in the format <username>@<domain>.<com>/,
+      ),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByText(
-        /professorEmail must be in the format <username>@<domain>.<com>/
-      )
+        /professorEmail must be in the format <username>@<domain>.<com>/,
+      ),
     ).not.toBeInTheDocument();
 
     const errorMessages = screen.getAllByText(
-      /Local date time in ISO format required./
+      /Local date time in ISO format required./,
     );
     expect(errorMessages.length).toBe(2); // Check that there are exactly two error messages
     errorMessages.forEach((msg) => expect(msg).toBeInTheDocument());
@@ -124,25 +124,25 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm submitAction={mockSubmitAction} />
-      </Router>
+      </Router>,
     );
 
     await screen.findByTestId("RecommendationRequestForm-dateRequested");
 
     const localDateTimeFieldA = screen.getByTestId(
-      "RecommendationRequestForm-dateRequested"
+      "RecommendationRequestForm-dateRequested",
     );
     const localDateTimeFieldB = screen.getByTestId(
-      "RecommendationRequestForm-dateNeeded"
+      "RecommendationRequestForm-dateNeeded",
     );
     const professorEmail = screen.getByTestId(
-      "RecommendationRequestForm-professorEmail"
+      "RecommendationRequestForm-professorEmail",
     );
     const requesterEmail = screen.getByTestId(
-      "RecommendationRequestForm-requesterEmail"
+      "RecommendationRequestForm-requesterEmail",
     );
     const explanation = screen.getByTestId(
-      "RecommendationRequestForm-explanation"
+      "RecommendationRequestForm-explanation",
     );
 
     const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
@@ -168,27 +168,27 @@ describe("RecommendationRequestForm tests", () => {
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
     expect(
-      screen.queryByText(/Local date time in ISO format required./)
+      screen.queryByText(/Local date time in ISO format required./),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/requesterEmail is required./)
+      screen.queryByText(/requesterEmail is required./),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/Professor's email is required./)
+      screen.queryByText(/Professor's email is required./),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/Explanation is required/)
+      screen.queryByText(/Explanation is required/),
     ).not.toBeInTheDocument();
 
     expect(
       screen.queryByText(
-        /requesterEmail must be in the format <username>@<domain>.<com>/
-      )
+        /requesterEmail must be in the format <username>@<domain>.<com>/,
+      ),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByText(
-        /professorEmail must be in the format <username>@<domain>.<com>/
-      )
+        /professorEmail must be in the format <username>@<domain>.<com>/,
+      ),
     ).not.toBeInTheDocument();
   });
 
@@ -196,7 +196,7 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm />
-      </Router>
+      </Router>,
     );
     await screen.findByTestId("RecommendationRequestForm-cancel");
     const cancelButton = screen.getByTestId("RecommendationRequestForm-cancel");
@@ -210,10 +210,10 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <Router>
         <RecommendationRequestForm />
-      </Router>
+      </Router>,
     );
     const emailInput = screen.getByTestId(
-      "RecommendationRequestForm-requesterEmail"
+      "RecommendationRequestForm-requesterEmail",
     );
     const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
     return { emailInput, submitButton };
@@ -252,14 +252,14 @@ describe("RecommendationRequestForm tests", () => {
       fireEvent.click(submitButton);
       await waitFor(() => {
         expect(
-          screen.queryByText(/requesterEmail is required./)
+          screen.queryByText(/requesterEmail is required./),
         ).not.toBeInTheDocument();
       });
       await waitFor(() => {
         expect(
           screen.queryByText(
-            /requesterEmail must be in the format <username>@<domain>.<com>/
-          )
+            /requesterEmail must be in the format <username>@<domain>.<com>/,
+          ),
         ).not.toBeInTheDocument();
       });
     });
@@ -273,14 +273,14 @@ describe("RecommendationRequestForm tests", () => {
       fireEvent.click(submitButton);
       await waitFor(() => {
         expect(
-          screen.getByText(/requesterEmail is required./)
+          screen.getByText(/requesterEmail is required./),
         ).toBeInTheDocument();
       });
       await waitFor(() => {
         expect(
           screen.getByText(
-            /requesterEmail must be in the format <username>@<domain>.<com>/
-          )
+            /requesterEmail must be in the format <username>@<domain>.<com>/,
+          ),
         ).toBeInTheDocument();
       });
     });
