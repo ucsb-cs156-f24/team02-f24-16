@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team02-f24-16
 owner: ucsb-cs156-f24
 repo_name: team02-f24-16
-pull_requests: [{"author":{"id":"U_kgDOBtnpoQ","is_bot":false,"login":"li-kelly","name":""},"headRefName":"kl-form","number":70,"title":"form, story, test for ucsbdiningcommonsmenuitem","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/70"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjgyMzMyNjk2","is_bot":false,"login":"jayster7101","name":"Jayden"},"headRefName":"recReq-table","number":71,"title":"Recommendation Request react table and tests.","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/71"},{"author":{"id":"U_kgDOBtnpoQ","is_bot":false,"login":"li-kelly","name":""},"headRefName":"kl-form","number":70,"title":"form, story, test for ucsbdiningcommonsmenuitem","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/70"}]
