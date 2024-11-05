@@ -24,7 +24,8 @@ Create.args = {
 export const Update = Template.bind({});
 
 Update.args = {
-  initialContents: ucsbdiningcommonsmenuitemFixtures.oneUcsbDiningCommonsMenuItem[0],
+  initialContents:
+    ucsbdiningcommonsmenuitemFixtures.oneUcsbDiningCommonsMenuItem[0],
   buttonLabel: "Update",
   submitAction: (data) => {
     console.log("Submit was clicked with data: ", data);

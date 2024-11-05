@@ -40,7 +40,11 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBDiningCommonsMenuItemForm initialContents={ucsbdiningcommonsmenuitemFixtures.oneUcsbDiningCommonsMenuItem} />
+          <UCSBDiningCommonsMenuItemForm
+            initialContents={
+              ucsbdiningcommonsmenuitemFixtures.oneUcsbDiningCommonsMenuItem
+            }
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -89,8 +93,12 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     expect(screen.getByText(/Name is required/)).toBeInTheDocument();
     expect(screen.getByText(/Station is required/)).toBeInTheDocument();
 
-    const diningCommonsCodeInput = screen.getByTestId(`${testId}-diningcommonscode`);
-    fireEvent.change(diningCommonsCodeInput, { target: { value: "a".repeat(31) } });
+    const diningCommonsCodeInput = screen.getByTestId(
+      `${testId}-diningcommonscode`,
+    );
+    fireEvent.change(diningCommonsCodeInput, {
+      target: { value: "a".repeat(31) },
+    });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -112,7 +120,6 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     await waitFor(() => {
       expect(screen.getByText(/Station is required./)).toBeInTheDocument();
     });
-
   });
 
   test("Correct Error messsages on missing input", async () => {
@@ -122,7 +129,9 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       </Router>,
     );
     await screen.findByTestId("UCSBDiningCommonsMenuItemForm-submit");
-    const submitButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-submit");
+    const submitButton = screen.getByTestId(
+      "UCSBDiningCommonsMenuItemForm-submit",
+    );
 
     fireEvent.click(submitButton);
 
@@ -130,5 +139,4 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     expect(screen.getByText(/Name is required./)).toBeInTheDocument();
     expect(screen.getByText(/Station is required./)).toBeInTheDocument();
   });
-
 });
