@@ -59,7 +59,7 @@ function HelpRequestForm({
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requestTime">Date (iso format)</Form.Label>
+            <Form.Label htmlFor="requestTime">Request Time (iso format)</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requestTime"
               id="requestTime"
@@ -80,7 +80,7 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requesterEmail">Name</Form.Label>
+            <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requesterEmail"
               id="requesterEmail"
@@ -100,7 +100,7 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="teamId">Name</Form.Label>
+            <Form.Label htmlFor="teamId">Team ID</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-teamId"
               id="teamId"
@@ -120,7 +120,7 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="tableOrBreakoutRoom">Name</Form.Label>
+            <Form.Label htmlFor="tableOrBreakoutRoom">Table or Breakout Room Number</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-tableOrBreakoutRoom"
               id="tableOrBreakoutRoom"
@@ -140,7 +140,7 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="explanation">Name</Form.Label>
+            <Form.Label htmlFor="explanation">Explanation</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-explanation"
               id="explanation"
@@ -160,7 +160,7 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="solved">Name</Form.Label>
+            <Form.Label htmlFor="solved">Solved</Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-solved"
               id="solved"
