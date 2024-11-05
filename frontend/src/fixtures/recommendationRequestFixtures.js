@@ -27,7 +27,7 @@ const recommendationRequestFixtures = {
         "We need your insight on a spoken word project for a class on lyrical writing. Your expertise would be invaluable.",
       dateRequested: "2024-10-31T14:53:00",
       dateNeeded: "2024-11-08T14:53:00",
-      done: false,
+      done: true,
     },
     {
       id: 3,
