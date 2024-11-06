@@ -62,7 +62,7 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     });
   });
 
-  test("on submit, makes request to backend, and redirects to /ucsbdiningcommonsmenuitem", async () => {
+  test("on submit, makes request to backend, and redirects to /diningcommonsmenuitem", async () => {
     const queryClient = new QueryClient();
     const ucsbDiningCommonsMenuItem = {
       id: 3,
@@ -118,6 +118,6 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     expect(mockToast).toBeCalledWith(
       "New Menu Item Created - id: 3 name: Chicken Caesar Salad",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/ucsbdiningcommonsmenuitem" });
+    expect(mockNavigate).toBeCalledWith({ to: "/diningcommonsmenuitem" });
   });
 });
