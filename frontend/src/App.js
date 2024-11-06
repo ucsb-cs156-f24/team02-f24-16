@@ -105,7 +105,7 @@ function App() {
           <>
             <Route
               exact
-              path="/restaurants"
+              path="/ucsbdiningcommonsmenuitem"
               element={<UCSBDiningCommonsMenuItemIndexPage />}
             />
           </>
