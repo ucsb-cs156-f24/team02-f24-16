@@ -188,7 +188,31 @@ describe("AppNavbar tests", () => {
     expect(link.getAttribute("href")).toBe("/restaurants");
   });
 
-  test("Restaurant and UCSBDates links do NOT show when not logged in", async () => {
+  test("renders the recommendation request link correctly", async () => {
+    const currentUser = currentUserFixtures.userOnly;
+    const systemInfo = systemInfoFixtures.showingBoth;
+
+    const doLogin = jest.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <AppNavbar
+            currentUser={currentUser}
+            systemInfo={systemInfo}
+            doLogin={doLogin}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await screen.findByText("Recommendation Request");
+    const link = screen.getByText("Recommendation Request");
+    expect(link).toBeInTheDocument();
+    expect(link.getAttribute("href")).toBe("/recommendationRequest");
+  });
+
+  test("Restaurant and UCSBDates and Recommendation Request links do NOT show when not logged in", async () => {
     const currentUser = null;
     const systemInfo = systemInfoFixtures.showingBoth;
     const doLogin = jest.fn();
@@ -206,8 +230,11 @@ describe("AppNavbar tests", () => {
     );
 
     expect(screen.queryByText("Restaurants")).not.toBeInTheDocument();
+    expect(screen.queryByText("RecommendationRequest")).not.toBeInTheDocument();
     expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
   });
+
+
 
   test("when oauthlogin undefined, default value is used", async () => {
     const currentUser = currentUserFixtures.notLoggedIn;
