@@ -95,11 +95,11 @@ function UCSBOrganizationForm({
           data-testid="UCSBOrganizationForm-inactive"
           id="inactive"
           type="checkbox"
-          isInvalid={Boolean(errors.done)}
-          {...register("done")}
+          isInvalid={Boolean(errors.inactive)}
+          {...register("inactive")}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.done?.message}
+          {errors.inactive?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
