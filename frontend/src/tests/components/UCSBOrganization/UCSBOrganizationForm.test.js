@@ -16,7 +16,12 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
+  const expectedHeaders = [
+    "orgCode",
+    "orgTranslationShort",
+    "orgTranslation",
+    "inactive",
+  ];
   const testId = "UCSBOrganizationForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -40,7 +45,9 @@ describe("UCSBOrganizationForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrganization} />
+          <UCSBOrganizationForm
+            initialContents={ucsbOrganizationFixtures.oneOrganization}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -86,7 +93,9 @@ describe("UCSBOrganizationForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/orgCode is required/);
-    expect(screen.getByText(/orgTranslationShort is required/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/orgTranslationShort is required/),
+    ).toBeInTheDocument();
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
     //expect(screen.getByText(/inactive status is required/)).toBeInTheDocument();
 
@@ -97,22 +106,27 @@ describe("UCSBOrganizationForm tests", () => {
     await waitFor(() => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
-    
 
     const orgTranslationInput = screen.getByTestId(`${testId}-orgTranslation`);
-    fireEvent.change(nameInput, { target: { value: "" } });
+    fireEvent.change(orgTranslationInput, { target: { value: "" } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/orgTranslation is required./)).toBeInTheDocument();
+      expect(
+        screen.getByText(/orgTranslation is required./),
+      ).toBeInTheDocument();
     });
 
-    const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
+    const orgTranslationShortInput = screen.getByTestId(
+      `${testId}-orgTranslationShort`,
+    );
     fireEvent.change(orgTranslationShortInput, { target: { value: "" } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/orgTranslationShort is required./)).toBeInTheDocument();
+      expect(
+        screen.getByText(/orgTranslationShort is required./),
+      ).toBeInTheDocument();
     });
   });
 
@@ -121,7 +135,10 @@ describe("UCSBOrganizationForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrganization[0]} submitAction={submitAction} />
+          <UCSBOrganizationForm
+            initialContents={ucsbOrganizationFixtures.oneOrganization[0]}
+            submitAction={submitAction}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -136,5 +153,4 @@ describe("UCSBOrganizationForm tests", () => {
       expect(submitAction).toHaveBeenCalled();
     });
   });
-
 });

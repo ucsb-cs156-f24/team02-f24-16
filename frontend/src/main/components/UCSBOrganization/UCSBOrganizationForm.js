@@ -35,7 +35,7 @@ function UCSBOrganizationForm({
         </Form.Group>
       )}
 
-        <Form.Group className="mb-3">
+      <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">orgCode</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgCode"}
@@ -56,7 +56,9 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslationShort">orgTranslationShort</Form.Label>
+        <Form.Label htmlFor="orgTranslationShort">
+          orgTranslationShort
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgTranslationShort"
@@ -64,14 +66,12 @@ function UCSBOrganizationForm({
           isInvalid={Boolean(errors.orgTranslationShort)}
           {...register("orgTranslationShort", {
             required: "orgTranslationShort is required.",
-  
           })}
         />
         <Form.Control.Feedback type="invalid">
           {errors.orgTranslationShort?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslation">orgTranslation</Form.Label>
@@ -90,18 +90,18 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-            <Form.Label htmlFor="inactive">inactive</Form.Label>
-            <Form.Check
-              data-testid="UCSBOrganizationForm-inactive"
-              id="inactive"
-              type="checkbox"
-              isInvalid={Boolean(errors.done)}
-              {...register("done")}
-            />
-            <Form.Control.Feedback type="invalid">
-              {errors.done?.message}
-            </Form.Control.Feedback>
-        </Form.Group>
+        <Form.Label htmlFor="inactive">inactive</Form.Label>
+        <Form.Check
+          data-testid="UCSBOrganizationForm-inactive"
+          id="inactive"
+          type="checkbox"
+          isInvalid={Boolean(errors.done)}
+          {...register("done")}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.done?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
