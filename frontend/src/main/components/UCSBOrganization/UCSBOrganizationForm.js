@@ -64,10 +64,7 @@ function UCSBOrganizationForm({
           isInvalid={Boolean(errors.orgTranslationShort)}
           {...register("orgTranslationShort", {
             required: "orgTranslationShort is required.",
-            maxLength: {
-              value: 30,
-              message: "Max length 30 characters",
-            },
+  
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -85,10 +82,6 @@ function UCSBOrganizationForm({
           isInvalid={Boolean(errors.orgTranslation)}
           {...register("orgTranslation", {
             required: "orgTranslation is required.",
-            maxLength: {
-              value: 30,
-              message: "Max length 30 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -96,12 +89,19 @@ function UCSBOrganizationForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-
-      <Form.Select aria-label="Default select example">
-         <option>Open this select menu</option>
-         <option value="1">True</option>
-         <option value="2">False</option>
-      </Form.Select>
+      <Form.Group className="mb-3">
+            <Form.Label htmlFor="inactive">inactive</Form.Label>
+            <Form.Check
+              data-testid="UCSBOrganizationForm-inactive"
+              id="inactive"
+              type="checkbox"
+              isInvalid={Boolean(errors.done)}
+              {...register("done")}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.done?.message}
+            </Form.Control.Feedback>
+        </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
@@ -117,4 +117,4 @@ function UCSBOrganizationForm({
   );
 }
 
-export default RestaurantForm;
+export default UCSBOrganizationForm;

@@ -88,7 +88,7 @@ describe("UCSBOrganizationForm tests", () => {
     await screen.findByText(/orgCode is required/);
     expect(screen.getByText(/orgTranslationShort is required/)).toBeInTheDocument();
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
-    expect(screen.getByText(/Inactive status is required/)).toBeInTheDocument();
+    //expect(screen.getByText(/inactive status is required/)).toBeInTheDocument();
 
     const nameInput = screen.getByTestId(`${testId}-orgCode`);
     fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
@@ -97,27 +97,44 @@ describe("UCSBOrganizationForm tests", () => {
     await waitFor(() => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
+    
+
+    const orgTranslationInput = screen.getByTestId(`${testId}-orgTranslation`);
+    fireEvent.change(nameInput, { target: { value: "" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/orgTranslation is required./)).toBeInTheDocument();
+    });
+
+    const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
+    fireEvent.change(orgTranslationShortInput, { target: { value: "" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/orgTranslationShort is required./)).toBeInTheDocument();
+    });
   });
 
-  // test("renders correctly with initialContents and handles submit", async () => {
-  //   const submitAction = jest.fn();
-  //   render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <Router>
-  //         <UCSBOrganizationForm initialContents={organizationFixtures.oneOrganization[0]} submitAction={submitAction} />
-  //       </Router>
-  //     </QueryClientProvider>,
-  //   );
+  test("renders correctly with initialContents and handles submit", async () => {
+    const submitAction = jest.fn();
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrganization[0]} submitAction={submitAction} />
+        </Router>
+      </QueryClientProvider>,
+    );
 
-  //   const orgCodeInput = screen.getByTestId(`${testId}-orgCode`);
-  //   fireEvent.change(orgCodeInput, { target: { value: "ZETA" } });
+    const orgCodeInput = screen.getByTestId(`${testId}-orgCode`);
+    fireEvent.change(orgCodeInput, { target: { value: "ZETA" } });
 
-  //   const submitButton = screen.getByTestId(`${testId}-submit`);
-  //   fireEvent.click(submitButton);
+    const submitButton = screen.getByTestId(`${testId}-submit`);
+    fireEvent.click(submitButton);
 
-  //   await waitFor(() => {
-  //     expect(submitAction).toHaveBeenCalled();
-  //   });
-  // });
+    await waitFor(() => {
+      expect(submitAction).toHaveBeenCalled();
+    });
+  });
 
 });
