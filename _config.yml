@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team02-f24-16
 owner: ucsb-cs156-f24
 repo_name: team02-f24-16
-pull_requests: [{"author":{"id":"U_kgDOB3D13A","is_bot":false,"login":"rohanpreetam","name":""},"headRefName":"rp-MenuItemReview-backend","number":74,"title":"Created Fixtures for MenuItemReview table","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/74"}]
+pull_requests: [{"author":{"id":"U_kgDOBtnpoQ","is_bot":false,"login":"li-kelly","name":""},"headRefName":"kl-udcmi-table","number":75,"title":"table, tests, story, utils for ucsbdiningcommonsmenuitem added","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/75"},{"author":{"id":"U_kgDOB3D13A","is_bot":false,"login":"rohanpreetam","name":""},"headRefName":"rp-MenuItemReview-backend","number":74,"title":"Created Fixtures for MenuItemReview table","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/74"}]
