@@ -234,8 +234,6 @@ describe("AppNavbar tests", () => {
     expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
   });
 
-
-
   test("when oauthlogin undefined, default value is used", async () => {
     const currentUser = currentUserFixtures.notLoggedIn;
     const systemInfo = systemInfoFixtures.oauthLoginUndefined;
