@@ -104,7 +104,7 @@ describe("UCSBOrganizationTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
     ).toHaveTextContent("✕");
-    
+
     /////////////////
 
     expect(
@@ -201,7 +201,7 @@ describe("UCSBOrganizationTable tests", () => {
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
     ).toHaveTextContent("✕");
-    
+
     /////////////////
 
     expect(
