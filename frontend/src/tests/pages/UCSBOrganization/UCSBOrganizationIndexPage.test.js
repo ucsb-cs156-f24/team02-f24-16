@@ -56,7 +56,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantIndexPage />
+          <UCSBOrganizationIndexPage />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -146,7 +146,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     axiosMock
       .onGet("/api/restaurants/all")
-      .reply(200, restaurantFixtures.threeRestaurants);
+      .reply(200, ucsbOrganizationFixtures.threeOrganizations);
     axiosMock
       .onDelete("/api/restaurants")
       .reply(200, "Restaurant with id 1 was deleted");
