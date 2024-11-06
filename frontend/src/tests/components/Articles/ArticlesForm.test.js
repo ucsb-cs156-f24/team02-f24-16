@@ -17,7 +17,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
 
     expect(await screen.findByText(/Title/)).toBeInTheDocument();
@@ -34,22 +34,34 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm initialContents={initialContents} />
-      </Router>
+      </Router>,
     );
 
-    expect(screen.getByTestId(`${testId}-id`)).toHaveValue(String(initialContents.id));
-    expect(screen.getByTestId(`${testId}-title`)).toHaveValue(initialContents.title);
-    expect(screen.getByTestId(`${testId}-url`)).toHaveValue(initialContents.url);
-    expect(screen.getByTestId(`${testId}-explanation`)).toHaveValue(initialContents.explanation);
-    expect(screen.getByTestId(`${testId}-email`)).toHaveValue(initialContents.email);
-    expect(screen.getByTestId(`${testId}-dateAdded`)).toHaveValue(initialContents.dateAdded.slice(0, 16));
+    expect(screen.getByTestId(`${testId}-id`)).toHaveValue(
+      String(initialContents.id),
+    );
+    expect(screen.getByTestId(`${testId}-title`)).toHaveValue(
+      initialContents.title,
+    );
+    expect(screen.getByTestId(`${testId}-url`)).toHaveValue(
+      initialContents.url,
+    );
+    expect(screen.getByTestId(`${testId}-explanation`)).toHaveValue(
+      initialContents.explanation,
+    );
+    expect(screen.getByTestId(`${testId}-email`)).toHaveValue(
+      initialContents.email,
+    );
+    expect(screen.getByTestId(`${testId}-dateAdded`)).toHaveValue(
+      initialContents.dateAdded.slice(0, 16),
+    );
   });
 
   test("shows validation errors on empty submission", async () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
 
     fireEvent.click(screen.getByTestId(`${testId}-submit`));
@@ -67,16 +79,27 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm submitAction={mockSubmitAction} />
-      </Router>
+      </Router>,
     );
 
-    const { title, url, explanation, email, dateAdded } = articlesFixtures.oneArticle;
+    const { title, url, explanation, email, dateAdded } =
+      articlesFixtures.oneArticle;
 
-    fireEvent.change(screen.getByTestId(`${testId}-title`), { target: { value: title } });
-    fireEvent.change(screen.getByTestId(`${testId}-url`), { target: { value: url } });
-    fireEvent.change(screen.getByTestId(`${testId}-explanation`), { target: { value: explanation } });
-    fireEvent.change(screen.getByTestId(`${testId}-email`), { target: { value: email } });
-    fireEvent.change(screen.getByTestId(`${testId}-dateAdded`), { target: { value: dateAdded.slice(0, 16) } });
+    fireEvent.change(screen.getByTestId(`${testId}-title`), {
+      target: { value: title },
+    });
+    fireEvent.change(screen.getByTestId(`${testId}-url`), {
+      target: { value: url },
+    });
+    fireEvent.change(screen.getByTestId(`${testId}-explanation`), {
+      target: { value: explanation },
+    });
+    fireEvent.change(screen.getByTestId(`${testId}-email`), {
+      target: { value: email },
+    });
+    fireEvent.change(screen.getByTestId(`${testId}-dateAdded`), {
+      target: { value: dateAdded.slice(0, 16) },
+    });
 
     fireEvent.click(screen.getByTestId(`${testId}-submit`));
 
@@ -87,7 +110,7 @@ describe("ArticlesForm tests", () => {
     render(
       <Router>
         <ArticlesForm />
-      </Router>
+      </Router>,
     );
 
     fireEvent.click(screen.getByTestId(`${testId}-cancel`));
