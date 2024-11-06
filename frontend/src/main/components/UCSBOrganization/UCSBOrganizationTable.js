@@ -10,14 +10,14 @@ import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function UCSBOrganizationTable({
-  organizations,
+  organization,
   currentUser,
   testIdPrefix = "UCSBOrganizationTable",
 }) {
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
-    navigate(`/organizations/edit/${cell.row.values.id}`);
+    navigate(`/organizations/edit/${cell.row.values.orgCode}`);
   };
 
   // Stryker disable all : hard to test for query caching
@@ -39,7 +39,6 @@ export default function UCSBOrganizationTable({
       Header: "OrgCode",
       accessor: "orgCode", // accessor is the "key" in the data
     },
-
     {
       Header: "OrgTranslationShort",
       accessor: "orgTranslationShort",
@@ -49,21 +48,23 @@ export default function UCSBOrganizationTable({
       accessor: "orgTranslation",
     },
     {
-        Header: "Inactive",
-        accessor: "inactive",
-        Cell: ({ value }) => (value ? "✓" : "✕"),
+      Header: "Inactive",
+      accessor: "inactive",
+      Cell: ({ value }) => (value ? "✓" : "✕"),
     },
-
   ];
 
-  if (hasRole(currentUser, "ROLE_ADMIN")) {
+//   if (hasRole(currentUser, "ROLE_ADMIN")) {
+//     columns.push(ButtonColumn("Edit", "primary", editCallback, testIdPrefix));
+//     columns.push(
+//       ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix),
+//     );
+//   }
+if (hasRole(currentUser, "ROLE_ADMIN")) {
     columns.push(ButtonColumn("Edit", "primary", editCallback, testIdPrefix));
     columns.push(
       ButtonColumn("Delete", "danger", deleteCallback, testIdPrefix),
     );
   }
-
-  return (
-    <OurTable data={organizations} columns={columns} testid={testIdPrefix} />
-  );
+  return <OurTable data={organization} columns={columns} testid={testIdPrefix} />;
 }

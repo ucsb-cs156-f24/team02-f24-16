@@ -21,7 +21,7 @@ function UCSBOrganizationForm({
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
-      {initialContents && (
+      {/* {initialContents && (
         <Form.Group className="mb-3">
           <Form.Label htmlFor="id">Id</Form.Label>
           <Form.Control
@@ -33,7 +33,7 @@ function UCSBOrganizationForm({
             disabled
           />
         </Form.Group>
-      )}
+      )} */}
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">orgCode</Form.Label>
