@@ -1,3 +1,4 @@
+
 title: Documentation
 description: >- # this means to ignore newlines until "baseurl:"
   When reviewing a PR for this repo, you can see what the documentation,
@@ -17,7 +18,9 @@ collections:
     permalink: /branches/:path/
 
 repo_name: "TBD"
+
+
 repo: ucsb-cs156-f24/team02-f24-16
 owner: ucsb-cs156-f24
 repo_name: team02-f24-16
-pull_requests: [{"author":{"id":"U_kgDOBtnpoQ","is_bot":false,"login":"li-kelly","name":""},"headRefName":"kl-udcmi-createpage","number":81,"title":"edited the create page files following examples and added the storyboard","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/81"},{"author":{"id":"U_kgDOB3Ckdw","is_bot":false,"login":"Salshriaan","name":""},"headRefName":"sa-Articles-backend","number":77,"title":"Sa articles backend","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/77"},{"author":{"id":"MDQ6VXNlcjgyMzMyNjk2","is_bot":false,"login":"jayster7101","name":"Jayden"},"headRefName":"reqReq-pages-placeholder","number":76,"title":"recommendation request pages place holder","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/76"}]
+pull_requests: [{"author":{"id":"U_kgDOBtJfBw","is_bot":false,"login":"cs11111111","name":""},"headRefName":"Claire-Org-1","number":82,"title":"create page for organization #22","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/82"},{"author":{"id":"U_kgDOBtnpoQ","is_bot":false,"login":"li-kelly","name":""},"headRefName":"kl-udcmi-createpage","number":81,"title":"edited the create page files following examples and added the storyboard","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/81"},{"author":{"id":"U_kgDOB3Ckdw","is_bot":false,"login":"Salshriaan","name":""},"headRefName":"sa-Articles-backend","number":77,"title":"Sa articles backend","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/77"},{"author":{"id":"MDQ6VXNlcjgyMzMyNjk2","is_bot":false,"login":"jayster7101","name":"Jayden"},"headRefName":"reqReq-pages-placeholder","number":76,"title":"recommendation request pages place holder","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/76"}]
