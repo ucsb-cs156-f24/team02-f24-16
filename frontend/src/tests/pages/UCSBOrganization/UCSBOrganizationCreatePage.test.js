@@ -88,7 +88,9 @@ describe("UCSBOrganizationCreatePage tests", () => {
     const orgCodeInput = screen.getByLabelText("orgCode");
     expect(orgCodeInput).toBeInTheDocument();
 
-    const orgTranslationShortInput = screen.getByLabelText("orgTranslationShort");
+    const orgTranslationShortInput = screen.getByLabelText(
+      "orgTranslationShort",
+    );
     expect(orgTranslationShortInput).toBeInTheDocument();
 
     const orgTranslationInput = screen.getByLabelText("orgTranslation");
@@ -105,8 +107,8 @@ describe("UCSBOrganizationCreatePage tests", () => {
       target: { value: "SKYDIVING CLUB" },
     });
     fireEvent.change(orgTranslationInput, {
-        target: { value: "SKYDIVING CLUB AT UCSB" },
-      });
+      target: { value: "SKYDIVING CLUB AT UCSB" },
+    });
     fireEvent.change(inactiveInput, {
       target: { value: false },
     });
@@ -115,10 +117,10 @@ describe("UCSBOrganizationCreatePage tests", () => {
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-        orgCode: "SKY",
-        orgTranslationShort: "SKYDIVING CLUB",
-        orgTranslation: "SKYDIVING CLUB AT UCSB",
-        inactive: false,
+      orgCode: "SKY",
+      orgTranslationShort: "SKYDIVING CLUB",
+      orgTranslation: "SKYDIVING CLUB AT UCSB",
+      inactive: false,
     });
 
     // assert - check that the toast was called with the expected message
