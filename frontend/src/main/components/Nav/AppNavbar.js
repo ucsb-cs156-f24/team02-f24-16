@@ -76,7 +76,7 @@ export default function AppNavbar({
               {hasRole(currentUser, "ROLE_USER") && (
                 <>
                   <Nav.Link as={Link} to="/ucsbdiningcommonsmenuitem">
-                    UCSBDiningCommonsMenuItem
+                    UCSB Dining Commons Menu Item
                   </Nav.Link>
                 </>
               )}

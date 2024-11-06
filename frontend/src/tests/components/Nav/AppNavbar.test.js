@@ -206,8 +206,8 @@ describe("AppNavbar tests", () => {
       </QueryClientProvider>,
     );
 
-    await screen.findByText("UCSBDiningCommonsMenuItem");
-    const link = screen.getByText("UCSBDiningCommonsMenuItem");
+    await screen.findByText("UCSB Dining Commons Menu Item");
+    const link = screen.getByText("UCSB Dining Commons Menu Item");
     expect(link).toBeInTheDocument();
     expect(link.getAttribute("href")).toBe("/ucsbdiningcommonsmenuitem");
   });
