@@ -1,17 +1,20 @@
 // Import necessary modules and functions
-import { onDeleteSuccess, cellToAxiosParamsDelete } from "main/utils/ArticlesUtils";
-import { toast } from 'react-toastify';
+import {
+  onDeleteSuccess,
+  cellToAxiosParamsDelete,
+} from "main/utils/ArticlesUtils";
+import { toast } from "react-toastify";
 
 // Mock `react-toastify` to avoid actual toast calls during tests
-jest.mock('react-toastify', () => ({
+jest.mock("react-toastify", () => ({
   toast: jest.fn(),
 }));
 
-describe('ArticlesUtils', () => {
-  describe('onDeleteSuccess', () => {
-    it('should log the message and call toast with the message', () => {
+describe("ArticlesUtils", () => {
+  describe("onDeleteSuccess", () => {
+    it("should log the message and call toast with the message", () => {
       // Arrange
-      const message = 'Article deleted successfully';
+      const message = "Article deleted successfully";
       console.log = jest.fn(); // Mock console.log
 
       // Act
@@ -23,8 +26,8 @@ describe('ArticlesUtils', () => {
     });
   });
 
-  describe('cellToAxiosParamsDelete', () => {
-    it('should return the correct axios params object for a cell', () => {
+  describe("cellToAxiosParamsDelete", () => {
+    it("should return the correct axios params object for a cell", () => {
       // Arrange
       const mockCell = {
         row: {
@@ -39,8 +42,8 @@ describe('ArticlesUtils', () => {
 
       // Assert
       expect(result).toEqual({
-        url: '/api/articles',
-        method: 'DELETE',
+        url: "/api/articles",
+        method: "DELETE",
         params: {
           id: 123,
         },

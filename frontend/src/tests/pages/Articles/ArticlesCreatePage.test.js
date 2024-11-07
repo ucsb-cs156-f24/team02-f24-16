@@ -1,4 +1,3 @@
-
 import { render, screen } from "@testing-library/react";
 import PlaceholderCreatePage from "main/pages/Articles/ArticlesCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";

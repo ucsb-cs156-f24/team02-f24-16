@@ -28,7 +28,7 @@ describe("ArticlesTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     const expectedHeaders = ["ID", "Title", "URL", "Explanation", "Date Added"];
@@ -46,19 +46,19 @@ describe("ArticlesTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "1"
+      "1",
     );
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "2"
+      "2",
     );
 
     const editButton = screen.queryByTestId(
-      `${testId}-cell-row-0-col-Edit-button`
+      `${testId}-cell-row-0-col-Edit-button`,
     );
     expect(editButton).not.toBeInTheDocument();
 
     const deleteButton = screen.queryByTestId(
-      `${testId}-cell-row-0-col-Delete-button`
+      `${testId}-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).not.toBeInTheDocument();
   });
@@ -74,7 +74,7 @@ describe("ArticlesTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     const expectedHeaders = ["ID", "Title", "URL", "Explanation", "Date Added"];
@@ -92,20 +92,20 @@ describe("ArticlesTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "1"
+      "1",
     );
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "2"
+      "2",
     );
 
     const editButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Edit-button`
+      `${testId}-cell-row-0-col-Edit-button`,
     );
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
     const deleteButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Delete-button`
+      `${testId}-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
@@ -122,24 +122,24 @@ describe("ArticlesTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.getByTestId(`ArticlesTable-cell-row-0-col-id`)
+        screen.getByTestId(`ArticlesTable-cell-row-0-col-id`),
       ).toHaveTextContent("1");
     });
 
     const editButton = screen.getByTestId(
-      `ArticlesTable-cell-row-0-col-Edit-button`
+      `ArticlesTable-cell-row-0-col-Edit-button`,
     );
     expect(editButton).toBeInTheDocument();
 
     fireEvent.click(editButton);
 
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/articles/edit/1")
+      expect(mockedNavigate).toHaveBeenCalledWith("/articles/edit/1"),
     );
   });
 
@@ -147,7 +147,9 @@ describe("ArticlesTable tests", () => {
     const currentUser = currentUserFixtures.adminUser;
 
     const axiosMock = new AxiosMockAdapter(axios);
-    axiosMock.onDelete("/api/articles").reply(200, { message: "Article deleted" });
+    axiosMock
+      .onDelete("/api/articles")
+      .reply(200, { message: "Article deleted" });
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -157,17 +159,17 @@ describe("ArticlesTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     await waitFor(() => {
       expect(
-        screen.getByTestId(`ArticlesTable-cell-row-0-col-id`)
+        screen.getByTestId(`ArticlesTable-cell-row-0-col-id`),
       ).toHaveTextContent("1");
     });
 
     const deleteButton = screen.getByTestId(
-      `ArticlesTable-cell-row-0-col-Delete-button`
+      `ArticlesTable-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
 

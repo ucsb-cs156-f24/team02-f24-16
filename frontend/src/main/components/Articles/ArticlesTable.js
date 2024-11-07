@@ -20,7 +20,7 @@ export default function ArticlesTable({ articles, currentUser }) {
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/articles/all"]
+    ["/api/articles/all"],
   );
   // Stryker restore all
 
@@ -54,12 +54,14 @@ export default function ArticlesTable({ articles, currentUser }) {
 
   if (hasRole(currentUser, "ROLE_ADMIN")) {
     columns.push(
-      ButtonColumn("Edit", "primary", editCallback, "ArticlesTable")
+      ButtonColumn("Edit", "primary", editCallback, "ArticlesTable"),
     );
     columns.push(
-      ButtonColumn("Delete", "danger", deleteCallback, "ArticlesTable")
+      ButtonColumn("Delete", "danger", deleteCallback, "ArticlesTable"),
     );
   }
 
-  return <OurTable data={articles} columns={columns} testid={"ArticlesTable"} />;
+  return (
+    <OurTable data={articles} columns={columns} testid={"ArticlesTable"} />
+  );
 }
