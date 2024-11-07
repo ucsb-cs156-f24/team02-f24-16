@@ -71,7 +71,7 @@ function HelpRequestForm({
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.requestTime && "Request time is required. "}
+              {errors.requestTime && "Request time is required."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -160,21 +160,17 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="solved">Solved</Form.Label>
-            <Form.Control
+            <Form.Label htmlFor="solved">Handled</Form.Label>
+            <Form.Select 
               data-testid="HelpRequestForm-solved"
               id="solved"
-              as="select"
-              isInvalid={Boolean(errors.solved)}
               {...register("solved", {
-                required: "Whether request is solved or not is required.",
+                setValueAs: (solved) => Boolean(solved)
               })}
-            />
-              <option value="true">Solved</option>
-              <option value="false">Not Solved</option>
-            <Form.Control.Feedback type="invalid">
-              {errors.solved?.message}
-            </Form.Control.Feedback>
+            > 
+              <option value={true}>Solved</option>
+              <option value={false}>Not Solved</option>
+            </Form.Select>
           </Form.Group>
         </Col>
       </Row>

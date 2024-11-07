@@ -52,6 +52,10 @@ export default function HelpRequestTable({ requests, currentUser }) {
       accessor: "requesterEmail",
     },
     {
+      Header: "Team ID",
+      accessor: "teamId",
+    },
+    {
       Header: "Table or Breakout Room Number",
       accessor: "tableOrBreakoutRoom",
     },
@@ -64,8 +68,11 @@ export default function HelpRequestTable({ requests, currentUser }) {
         accessor: "explanation",
     },
     {
-        Header: "Solved",
+        Header: "Handled",
         accessor: "solved",
+        // Credits to Jayden for the code here! 
+        // Renders a checkmark box for whether or not the help request has been solved.
+        Cell: ({ value }) => (value ? "✅" : "❌"),
     },
   ];
 
