@@ -62,7 +62,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
     });
   });
 
-  test("on submit, makes request to backend, and redirects to /organizations", async () => {
+  test("on submit, makes request to backend, and redirects to /ucsborganization", async () => {
     const queryClient = new QueryClient();
     const organization = {
       orgCode: "SKY",
@@ -71,7 +71,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
       inactive: false,
     };
 
-    axiosMock.onPost("/api/organizations/post").reply(202, organization);
+    axiosMock.onPost("/api/ucsborganization/post").reply(202, organization);
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -127,6 +127,6 @@ describe("UCSBOrganizationCreatePage tests", () => {
     expect(mockToast).toBeCalledWith(
       "New organization Created - orgCode: SKY orgTranslationShort: SKYDIVING CLUB orgTranslation: SKYDIVING CLUB AT UCSB inactive: false",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/organizations" });
+    expect(mockNavigate).toBeCalledWith({ to: "/ucsborganization" });
   });
 });

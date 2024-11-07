@@ -102,7 +102,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
   test("Renders with Create Button for admin user", async () => {
     setupAdminUser();
-    axiosMock.onGet("/api/organizations/all").reply(200, []);
+    axiosMock.onGet("/api/ucsborganization/all").reply(200, []);
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -116,14 +116,14 @@ describe("UCSBOrganizationIndexPage tests", () => {
       expect(screen.getByText(/Create UCSBOrganization/)).toBeInTheDocument();
     });
     const button = screen.getByText(/Create UCSBOrganization/);
-    expect(button).toHaveAttribute("href", "/organizations/create");
+    expect(button).toHaveAttribute("href", "/ucsborganization/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
-  test("renders three organizations correctly for regular user", async () => {
+  test("renders three ucsborganization correctly for regular user", async () => {
     setupUserOnly();
     axiosMock
-      .onGet("/api/organizations/all")
+      .onGet("/api/ucsborganization/all")
       .reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
     render(
@@ -177,7 +177,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
   test("renders empty table when backend unavailable, user only", async () => {
     setupUserOnly();
 
-    axiosMock.onGet("/api/organizations/all").timeout();
+    axiosMock.onGet("/api/ucsborganization/all").timeout();
 
     const restoreConsole = mockConsole();
 
@@ -195,7 +195,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     const errorMessage = console.error.mock.calls[0][0];
     expect(errorMessage).toMatch(
-      "Error communicating with backend via GET on /api/organizations/all",
+      "Error communicating with backend via GET on /api/ucsborganization/all",
     );
     restoreConsole();
   });
@@ -204,10 +204,10 @@ describe("UCSBOrganizationIndexPage tests", () => {
     setupAdminUser();
 
     axiosMock
-      .onGet("/api/organizations/all")
+      .onGet("/api/ucsborganization/all")
       .reply(200, ucsbOrganizationFixtures.threeOrganizations);
     axiosMock
-      .onDelete("/api/organizations")
+      .onDelete("/api/ucsborganization")
       .reply(200, "Organization with orgCode ZPR was deleted");
 
     render(
@@ -242,8 +242,8 @@ describe("UCSBOrganizationIndexPage tests", () => {
     await waitFor(() => {
       expect(axiosMock.history.delete.length).toBe(1);
     });
-    expect(axiosMock.history.delete[0].url).toBe("/api/organizations");
-    expect(axiosMock.history.delete[0].url).toBe("/api/organizations");
+    expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
+    expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganization");
     expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "SKY" });
   });
 });

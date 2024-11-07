@@ -35,8 +35,8 @@ export default function UCSBOrganizationIndexPage() {
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/organizations/all"],
-    { method: "GET", url: "/api/organizations/all" },
+    ["/api/ucsborganization/all"],
+    { method: "GET", url: "/api/ucsborganization/all" },
     // Stryker disable next-line all : don't test default value of empty list
     [],
   );
@@ -46,7 +46,7 @@ export default function UCSBOrganizationIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/organizations/create"
+          href="/ucsborganization/create"
           style={{ float: "right" }}
         >
           Create UCSBOrganization
