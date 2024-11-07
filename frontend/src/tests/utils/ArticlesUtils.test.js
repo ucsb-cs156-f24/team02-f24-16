@@ -1,5 +1,5 @@
 // Import necessary modules and functions
-import { onDeleteSuccess, cellToAxiosParamsDelete } from './ArticlesUtils';
+import { onDeleteSuccess, cellToAxiosParamsDelete } from "main/utils/ArticlesUtils";
 import { toast } from 'react-toastify';
 
 // Mock `react-toastify` to avoid actual toast calls during tests
