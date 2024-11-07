@@ -18,7 +18,6 @@ import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
-
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -82,7 +81,7 @@ function App() {
           <>
             <Route
               exact
-              path="/organizations"
+              path="/ucsborganization"
               element={<UCSBOrganizationIndexPage />}
             />
           </>
@@ -91,12 +90,12 @@ function App() {
           <>
             <Route
               exact
-              path="/organizations/edit/:id"
+              path="/ucsborganization/edit/:id"
               element={<UCSBOrganizationEditPage />}
             />
             <Route
               exact
-              path="/organizations/create"
+              path="/ucsborganization/create"
               element={<UCSBOrganizationCreatePage />}
             />
           </>
