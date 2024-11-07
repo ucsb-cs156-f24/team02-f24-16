@@ -17,7 +17,6 @@
 //   );
 // }
 
-
 import React from "react";
 import { useBackend } from "main/utils/useBackend";
 
@@ -60,7 +59,10 @@ export default function UCSBOrganizationIndexPage() {
       <div className="pt-2">
         {createButton()}
         <h1>UCSB Organizations</h1>
-        <UCSBOrganizationTable organization={organization} currentUser={currentUser} />
+        <UCSBOrganizationTable
+          organization={organization}
+          currentUser={currentUser}
+        />
       </div>
     </BasicLayout>
   );
