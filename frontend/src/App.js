@@ -156,8 +156,6 @@ function App() {
           </>
         )}
 
-
-
         {hasRole(currentUser, "ROLE_USER") && (
           <>
             <Route
@@ -168,10 +166,8 @@ function App() {
           </>
         )}
 
-
         {hasRole(currentUser, "ROLE_ADMIN") && (
           <>
-  
             <Route
               exact
               path="/diningcommonsmenuitem/edit/:id"

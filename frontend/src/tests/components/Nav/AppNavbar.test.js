@@ -189,7 +189,6 @@ describe("AppNavbar tests", () => {
   });
 
   test("renders the recommendation request link correctly", async () => {
-
     const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
 
@@ -212,8 +211,6 @@ describe("AppNavbar tests", () => {
     expect(link).toBeInTheDocument();
     expect(link.getAttribute("href")).toBe("/recommendationRequest");
   });
-
-
 
   test("renders the ucsbdiningcommonsmenuitem link correctly", async () => {
     const currentUser = currentUserFixtures.userOnly;
