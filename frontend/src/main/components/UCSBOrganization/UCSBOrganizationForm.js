@@ -49,6 +49,7 @@ function UCSBOrganizationForm({
               message: "Max length 30 characters",
             },
           })}
+          disabled={Boolean(initialContents?.orgCode)}
         />
         <Form.Control.Feedback type="invalid">
           {errors.orgCode?.message}
