@@ -189,6 +189,7 @@ describe("AppNavbar tests", () => {
   });
 
   test("renders the recommendation request link correctly", async () => {
+
     const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
 
@@ -212,7 +213,33 @@ describe("AppNavbar tests", () => {
     expect(link.getAttribute("href")).toBe("/recommendationRequest");
   });
 
-  test("Restaurant and UCSBDates and Recommendation Request links do NOT show when not logged in", async () => {
+
+
+  test("renders the ucsbdiningcommonsmenuitem link correctly", async () => {
+    const currentUser = currentUserFixtures.userOnly;
+    const systemInfo = systemInfoFixtures.showingBoth;
+
+    const doLogin = jest.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <AppNavbar
+            currentUser={currentUser}
+            systemInfo={systemInfo}
+            doLogin={doLogin}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await screen.findByText("UCSB Dining Commons Menu Item");
+    const link = screen.getByText("UCSB Dining Commons Menu Item");
+    expect(link).toBeInTheDocument();
+    expect(link.getAttribute("href")).toBe("/diningcommonsmenuitem");
+  });
+
+  test("UCSBDiningCommonsMenuItem and Restaurant and UCSBDates and Recommendation Request links do NOT show when not logged in", async () => {
     const currentUser = null;
     const systemInfo = systemInfoFixtures.showingBoth;
     const doLogin = jest.fn();
@@ -229,6 +256,9 @@ describe("AppNavbar tests", () => {
       </QueryClientProvider>,
     );
 
+    expect(
+      screen.queryByText("UCSBDiningCommonsMenuItem"),
+    ).not.toBeInTheDocument();
     expect(screen.queryByText("Restaurants")).not.toBeInTheDocument();
     expect(screen.queryByText("RecommendationRequest")).not.toBeInTheDocument();
     expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
