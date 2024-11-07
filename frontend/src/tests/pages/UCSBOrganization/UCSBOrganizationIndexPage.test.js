@@ -113,9 +113,9 @@ describe("UCSBOrganizationIndexPage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(/Create Organization/)).toBeInTheDocument();
+      expect(screen.getByText(/Create UCSBOrganization/)).toBeInTheDocument();
     });
-    const button = screen.getByText(/Create Organization/);
+    const button = screen.getByText(/Create UCSBOrganization/);
     expect(button).toHaveAttribute("href", "/organizations/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
@@ -146,7 +146,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         "KRC",
     );
 
-    const createOrganizationButton = screen.queryByText("Create Organization");
+    const createOrganizationButton = screen.queryByText("Create UCSBOrganization");
     expect(createOrganizationButton).not.toBeInTheDocument();
 
     const orgCode = screen.getByText("KRC");

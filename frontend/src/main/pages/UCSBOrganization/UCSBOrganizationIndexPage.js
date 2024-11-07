@@ -49,7 +49,7 @@ export default function UCSBOrganizationIndexPage() {
           href="/organizations/create"
           style={{ float: "right" }}
         >
-          Create Organization
+          Create UCSBOrganization
         </Button>
       );
     }
@@ -59,7 +59,7 @@ export default function UCSBOrganizationIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         {createButton()}
-        <h1>Organizations</h1>
+        <h1>UCSB Organizations</h1>
         <UCSBOrganizationTable organization={organization} currentUser={currentUser} />
       </div>
     </BasicLayout>
