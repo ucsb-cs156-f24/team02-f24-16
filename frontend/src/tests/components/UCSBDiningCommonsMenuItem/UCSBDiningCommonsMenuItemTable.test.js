@@ -92,7 +92,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     );
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-diningcommonscode`),
-    ).toHaveTextContent("ortega");
+    ).toHaveTextContent("DLG");
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -148,7 +148,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     );
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-diningcommonscode`),
-    ).toHaveTextContent("ortega");
+    ).toHaveTextContent("DLG");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();

@@ -18,7 +18,7 @@ const ucsbdiningcommonsmenuitemFixtures = {
 
     {
       id: 3,
-      diningcommonscode: "ortega",
+      diningcommonscode: "DLG",
       name: "Chicken Caesar Salad",
       station: "Entrees",
     },
