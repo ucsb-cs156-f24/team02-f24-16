@@ -28,44 +28,51 @@ import jakarta.validation.Valid;
 
 import java.time.LocalDateTime;
 
-/**
- * This is a REST controller for Menu Item Reviews
- */
-
-
 @Tag(name = "MenuItemReview")
-@RequestMapping("/api/MENUITEMREVIEW")
+@RequestMapping("/api/menuitemreview")
 @RestController
 @Slf4j
-
-
-public class MenuItemReviewController extends ApiController {
-
+public class MenuItemReviewController extends ApiController{
+    
     @Autowired
     MenuItemReviewRepository menuItemReviewRepository;
 
-    /**
-     * List all reviews
-     * 
-     * @return an iterable of menu item reviews
-     */
-
-    
-
     @Operation(summary= "List all menu item reviews")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("/all")
-    public Iterable<MenuItemReview> allmenuitemreviews() {
-        Iterable<MenuItemReview> reviews = menuItemReviewRepository.findAll();
-        return reviews;
+        @PreAuthorize("hasRole('ROLE_USER')")
+        @GetMapping("/all")
+        public Iterable<MenuItemReview> allMenuItemReviews() {
+            Iterable<MenuItemReview> reviews = menuItemReviewRepository.findAll();
+            return reviews;
+        }
+
+    @Operation(summary= "Create a new review")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/post")
+    public MenuItemReview postMenuItemReview(
+            @Parameter(name="itemId") @RequestParam long itemId,
+            @Parameter(name="reviewerEmail") @RequestParam String reviewerEmail,
+            @Parameter(name="stars") @RequestParam int stars,
+            @Parameter(name="dateReviewed", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("dateReviewed") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateReviewed,
+            @Parameter(name="comments") @RequestParam String comments)
+            throws JsonProcessingException {
+
+        // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        // See: https://www.baeldung.com/spring-date-parameters
+
+        //log.info("localDateTime={}", dateReviewed);
+
+        MenuItemReview menuItemReview = new MenuItemReview();
+        menuItemReview.setItemId(itemId);
+        menuItemReview.setReviewerEmail(reviewerEmail);
+        menuItemReview.setStars(stars);
+        menuItemReview.setDateReviewed(dateReviewed);
+        menuItemReview.setComments(comments);
+
+        MenuItemReview savedMenuItemReview = menuItemReviewRepository.save(menuItemReview);
+
+        return savedMenuItemReview;
     }
 
-    /**
-     * Get a single review by id
-     * 
-     * @param id the id of the review
-     * @return a menuItemReview
-     */
     @Operation(summary= "Get a single review")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
@@ -77,43 +84,10 @@ public class MenuItemReviewController extends ApiController {
         return menuItemReview;
     }
 
-    @Operation(summary= "Create a new item review")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/post")
-    public MenuItemReview postitemreview(
-            @Parameter(name="reviewerEmail") @RequestParam String reviewerEmail,
-            @Parameter(name="stars") @RequestParam int stars,
-            @Parameter(name="comments") @RequestParam String comments,
-            @Parameter(name="dateReviewed") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateReviewed) 
-            
-            throws JsonProcessingException {
-
-        // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-        // See: https://www.baeldung.com/spring-date-parameters
-
-        log.info("dateReviewed={}", dateReviewed);
-
-        MenuItemReview menuItemReview = new MenuItemReview();
-        menuItemReview.setReviewerEmail(reviewerEmail);
-        menuItemReview.setStars(stars);
-        menuItemReview.setComments(comments);
-        menuItemReview.setDateReviewed(dateReviewed);
-
-        MenuItemReview savedMenuItemReview = menuItemReviewRepository.save(menuItemReview);
-
-        return savedMenuItemReview;
-    }
-
-    /**
-     * Delete a MenuItemReview
-     * 
-     * @param id the id of the review to delete
-     * @return a message indicating the review was deleted
-     */
     @Operation(summary= "Delete a MenuItemReview")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
-    public Object deleteMenuItemReview(
+    public Object delteMenuItemReview(
             @Parameter(name="id") @RequestParam Long id) {
         MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
@@ -121,14 +95,7 @@ public class MenuItemReviewController extends ApiController {
         menuItemReviewRepository.delete(menuItemReview);
         return genericMessage("MenuItemReview with id %s deleted".formatted(id));
     }
-    
-    /**
-     * Update a single review
-     * 
-     * @param id       id of the review to update
-     * @param incoming the new review
-     * @return the updated review object
-     */
+
     @Operation(summary= "Update a single review")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("")
@@ -138,14 +105,16 @@ public class MenuItemReviewController extends ApiController {
 
         MenuItemReview menuItemReview = menuItemReviewRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(MenuItemReview.class, id));
+
+        menuItemReview.setItemId(incoming.getItemId());
         menuItemReview.setReviewerEmail(incoming.getReviewerEmail());
         menuItemReview.setStars(incoming.getStars());
-        menuItemReview.setComments(incoming.getComments());
         menuItemReview.setDateReviewed(incoming.getDateReviewed());
-        
+        menuItemReview.setComments(incoming.getComments());
 
         menuItemReviewRepository.save(menuItemReview);
 
         return menuItemReview;
     }
+
 }
