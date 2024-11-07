@@ -11,7 +11,7 @@ export default function UCSBDiningCommonsMenuItemCreatePage({
     url: "/api/ucsbdiningcommonsmenuitem/post",
     method: "POST",
     params: {
-      diningCommonsCode: ucsbDiningCommonsMenuItem.diningcommonscode,
+      diningCommonsCode: ucsbDiningCommonsMenuItem.diningCommonsCode,
       name: ucsbDiningCommonsMenuItem.name,
       station: ucsbDiningCommonsMenuItem.station,
     },

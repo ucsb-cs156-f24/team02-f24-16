@@ -66,7 +66,7 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     const queryClient = new QueryClient();
     const ucsbDiningCommonsMenuItem = {
       id: 3,
-      diningcommonscode: "ortega",
+      diningCommonsCode: "ortega",
       name: "Chicken Caesar Salad",
       station: "Entrees",
     };
@@ -109,7 +109,7 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
     expect(axiosMock.history.post[0].params).toEqual({
-      diningcommonscode: "ortega",
+      diningCommonsCode: "ortega",
       name: "Chicken Caesar Salad",
       station: "Entrees",
     });

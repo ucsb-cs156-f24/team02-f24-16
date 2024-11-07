@@ -2,7 +2,7 @@ const ucsbdiningcommonsmenuitemFixtures = {
   oneUcsbDiningCommonsMenuItem: [
     {
       id: 1,
-      diningcommonscode: "ortega",
+      diningCommonsCode: "ortega",
       name: "Baked Pesto Pasta with Chicken",
       station: "Entree Specials",
     },
@@ -11,21 +11,21 @@ const ucsbdiningcommonsmenuitemFixtures = {
   threeUcsbDiningCommonsMenuItems: [
     {
       id: 2,
-      diningcommonscode: "ortega",
+      diningCommonsCode: "ortega",
       name: "Tofu Banh Mi Sandwich (v)",
       station: "Entree Specials",
     },
 
     {
       id: 3,
-      diningcommonscode: "DLG",
+      diningCommonsCode: "DLG",
       name: "Chicken Caesar Salad",
       station: "Entrees",
     },
 
     {
       id: 4,
-      diningcommonscode: "portola",
+      diningCommonsCode: "portola",
       name: "Cream of Broccoli Soup (v)",
       station: "Greens & Grains",
     },
