@@ -215,7 +215,7 @@ describe("RecommendationRequestEditPage tests", () => {
       let rec = {
         id: 1,
         requesterEmail: "jaydenjardine@cs.ucsb.edu",
-        dateRequested: "rihanna.fenty@fentymusic.com",
+        senderEmail: "rihanna.fenty@fentymusic.com",
         explanation:
           "Requesting your participation in a university event focusing on the influence of Caribbean music in pop culture.",
         dateRequested: "2024-10-31T15:30",
