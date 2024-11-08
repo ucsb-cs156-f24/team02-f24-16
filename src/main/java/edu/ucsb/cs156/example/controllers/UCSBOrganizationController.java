@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
  * This is a REST controller for UCSBOrganization
  */
 
-@Tag(name = "UCSBOrganization")
+@Tag(name = "UCSBOrganizations")
 @RequestMapping("/api/ucsborganization")
 @RestController
 @Slf4j
@@ -48,38 +48,6 @@ public class UCSBOrganizationController extends ApiController {
         return organizations;
     }
 
-
-    /**
-     * This method creates a new organizations. Accessible only to users with the role "ROLE_ADMIN".
-     * @param orgCode code of the organizations
-     * @param orgTranslationShort name of the organizations
-     * @param orgTranslation whether or not the organizations has sack meals
-     * @param inactive whether or not the organizations has take out meals
-     * @return the save organizations
-     */
-
-    @Operation(summary= "Create a new organization")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/post")
-    public UCSBOrganization postOrganizations(
-        @Parameter(name="orgCode") @RequestParam String orgCode,
-        @Parameter(name="orgTranslationShort") @RequestParam String orgTranslationShort,
-        @Parameter(name="orgTranslation") @RequestParam String orgTranslation,
-        @Parameter(name="inactive") @RequestParam Boolean inactive
-        )
-        {
-
-        UCSBOrganization organizations = new UCSBOrganization();
-        organizations.setOrgCode(orgCode);
-        organizations.setOrgTranslationShort(orgTranslationShort);
-        organizations.setOrgTranslation(orgTranslation);
-        organizations.setInactive(inactive);
-
-        UCSBOrganization savedOrganizations = ucsbOrganizationRepository.save(organizations);
-
-        return savedOrganizations;
-    }
-  
   /**
      * This method returns a single organizations.
      * @param orgCode code of the organizations
@@ -95,6 +63,37 @@ public class UCSBOrganizationController extends ApiController {
 
         return organizations;
     }
+
+    /**
+     * This method creates a new organizations. Accessible only to users with the role "ROLE_ADMIN".
+     * @param orgCode code of the organizations
+     * @param orgTranslationShort name of the tranlationshort
+     * @param orgTranslation for tranlation
+     * @param inactive whether or not the organizations is inactive
+     * @return the save organizations
+     */
+
+    @Operation(summary= "Create a new organization")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/post")
+    public UCSBOrganization postOrganizations(
+        @Parameter(name="orgCode") @RequestParam String orgCode,
+        @Parameter(name="orgTranslationShort") @RequestParam String orgTranslationShort,
+        @Parameter(name="orgTranslation") @RequestParam String orgTranslation,
+        @Parameter(name="inactive") @RequestParam Boolean inactive
+    )
+    {
+        
+    UCSBOrganization organization = new UCSBOrganization();
+    organization.setOrgCode(orgCode);
+    organization.setOrgTranslationShort(orgTranslationShort);
+    organization.setOrgTranslation(orgTranslation);
+    organization.setInactive(inactive);
+    UCSBOrganization savedOrganizations = ucsbOrganizationRepository.save(organization);
+    return savedOrganizations;
+    }
+  
+
 
 
     /**

@@ -21,20 +21,6 @@ function UCSBOrganizationForm({
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
-      {/* {initialContents && (
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="id">Id</Form.Label>
-          <Form.Control
-            data-testid={testIdPrefix + "-id"}
-            id="id"
-            type="text"
-            {...register("id")}
-            value={initialContents.id}
-            disabled
-          />
-        </Form.Group>
-      )} */}
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">orgCode</Form.Label>
         <Form.Control
@@ -57,7 +43,9 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslationShort">orgTranslationShort</Form.Label>
+        <Form.Label htmlFor="orgTranslationShort">
+          orgTranslationShort
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgTranslationShort"
@@ -91,7 +79,7 @@ function UCSBOrganizationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">inactive</Form.Label>
         <Form.Check
-          data-testid="UCSBOrganizationForm-inactive"
+          data-testid={testIdPrefix + "-inactive"}
           id="inactive"
           type="checkbox"
           isInvalid={Boolean(errors.inactive)}
