@@ -94,7 +94,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     expect(screen.getByText(/Station is required/)).toBeInTheDocument();
 
     const diningCommonsCodeInput = screen.getByTestId(
-      `${testId}-diningcommonscode`,
+      `${testId}-diningCommonsCode`,
     );
     fireEvent.change(diningCommonsCodeInput, {
       target: { value: "a".repeat(31) },
