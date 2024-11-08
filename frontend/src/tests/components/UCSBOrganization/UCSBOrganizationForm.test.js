@@ -136,28 +136,4 @@ describe("UCSBOrganizationForm tests", () => {
       ).toBeInTheDocument();
     });
   });
-
-  // test("renders correctly with initialContents and handles submit", async () => {
-  //   const submitAction = jest.fn();
-  //   render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <Router>
-  //         <UCSBOrganizationForm
-  //           initialContents={ucsbOrganizationFixtures.oneOrganization[0]}
-  //           submitAction={submitAction}
-  //         />
-  //       </Router>
-  //     </QueryClientProvider>,
-  //   );
-
-  //   const orgCodeInput = screen.getByTestId(`${testId}-orgCode`);
-  //   fireEvent.change(orgCodeInput, { target: { value: "ZETA" } });
-
-  //   const submitButton = screen.getByTestId(`${testId}-submit`);
-  //   fireEvent.click(submitButton);
-
-  //   await waitFor(() => {
-  //     expect(submitAction).toHaveBeenCalled();
-  //   });
-  // });
 });
