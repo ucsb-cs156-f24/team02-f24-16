@@ -92,7 +92,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 MenuItemReview review_1 = MenuItemReview.builder()
-
+                                .itemId(3)
                                 .reviewerEmail("rohanpreetam21@gmail.com")
                                 .stars(4)
                                 .dateReviewed(ldt1)
@@ -143,7 +143,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 MenuItemReview review_1 = MenuItemReview.builder()
-
+                                .itemId(2)
                                 .reviewerEmail("rohanpreetam21@gmail.com")
                                 .stars(4)
                                 .dateReviewed(ldt1)
@@ -153,7 +153,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 LocalDateTime ldt2 = LocalDateTime.parse("2022-03-11T00:00:00");
 
                 MenuItemReview review_2 = MenuItemReview.builder()
-
+                                .itemId(3)
                                 .reviewerEmail("rohanpreetam@ucsb.com")
                                 .stars(3)
                                 .dateReviewed(ldt2)
@@ -187,6 +187,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
 
                 MenuItemReview review_1 = MenuItemReview.builder()
 
+                                .itemId(2)
                                 .reviewerEmail("rohanpreetam21@gmail.com")
                                 .stars(4)
                                 .dateReviewed(ldt1)
@@ -198,7 +199,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 // act  (DOUBT HERE)
                 MvcResult response = mockMvc.perform(
                                 post("/api/MENUITEMREVIEW/post")
-                                
+                                    .param("itemId", "2")
                                     .param("reviewerEmail","rohanpreetam21@gmail.com")
                                     .param("stars", "4")
                                     .param("dateReviewed", "2022-01-03T00:00:00")
@@ -222,6 +223,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 MenuItemReview review_1 = MenuItemReview.builder()
+                                .itemId(5)
                                 .reviewerEmail("rohanpreetam21@gmail.com")
                                 .stars(4)
                                 .dateReviewed(ldt1)
@@ -273,6 +275,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 LocalDateTime ldt2 = LocalDateTime.parse("2023-01-03T00:00:00");
 
                 MenuItemReview review_1_Original = MenuItemReview.builder()
+                                .itemId(5)
                                 .reviewerEmail("rohanpreetam21@gmail.com")
                                 .stars(4)
                                 .dateReviewed(ldt1)
@@ -280,6 +283,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                                 .build();
 
                 MenuItemReview review_1_Edited = MenuItemReview.builder()
+                                .itemId(6)
                                 .reviewerEmail("rohanpreetam21@hotmail.com")
                                 .stars(3)
                                 .dateReviewed(ldt2)
@@ -314,6 +318,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
                 MenuItemReview reviewEdited = MenuItemReview.builder()
+                                .itemId(6)
                                 .reviewerEmail("rohanpreetam21@hotmail.com")
                                 .stars(3)
                                 .dateReviewed(ldt1)
