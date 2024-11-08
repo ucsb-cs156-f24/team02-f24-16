@@ -18,7 +18,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
   const queryClient = new QueryClient();
 
   const expectedHeaders = ["id", "DiningCommonsCode", "Name", "Station"];
-  const expectedFields = ["id", "diningcommonscode", "name", "station"];
+  const expectedFields = ["id", "diningCommonsCode", "name", "station"];
   const testId = "UCSBDiningCommonsMenuItemTable";
 
   test("renders empty table correctly", () => {
@@ -84,15 +84,15 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
       "2",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-diningcommonscode`),
+      screen.getByTestId(`${testId}-cell-row-0-col-diningCommonsCode`),
     ).toHaveTextContent("ortega");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
       "3",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-diningcommonscode`),
-    ).toHaveTextContent("ortega");
+      screen.getByTestId(`${testId}-cell-row-1-col-diningCommonsCode`),
+    ).toHaveTextContent("DLG");
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -140,15 +140,15 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
       "2",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-diningcommonscode`),
+      screen.getByTestId(`${testId}-cell-row-0-col-diningCommonsCode`),
     ).toHaveTextContent("ortega");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
       "3",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-diningcommonscode`),
-    ).toHaveTextContent("ortega");
+      screen.getByTestId(`${testId}-cell-row-1-col-diningCommonsCode`),
+    ).toHaveTextContent("DLG");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
@@ -177,7 +177,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
       await screen.findByTestId(`${testId}-cell-row-0-col-id`),
     ).toHaveTextContent("2");
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-diningcommonscode`),
+      screen.getByTestId(`${testId}-cell-row-0-col-diningCommonsCode`),
     ).toHaveTextContent("ortega");
 
     const editButton = screen.getByTestId(
@@ -224,7 +224,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
       await screen.findByTestId(`${testId}-cell-row-0-col-id`),
     ).toHaveTextContent("2");
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-diningcommonscode`),
+      screen.getByTestId(`${testId}-cell-row-0-col-diningCommonsCode`),
     ).toHaveTextContent("ortega");
 
     const deleteButton = screen.getByTestId(
