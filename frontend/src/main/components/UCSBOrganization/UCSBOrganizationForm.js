@@ -21,20 +21,6 @@ function UCSBOrganizationForm({
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
-      {/* {initialContents && (
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="id">Id</Form.Label>
-          <Form.Control
-            data-testid={testIdPrefix + "-id"}
-            id="id"
-            type="text"
-            {...register("id")}
-            value={initialContents.id}
-            disabled
-          />
-        </Form.Group>
-      )} */}
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">orgCode</Form.Label>
         <Form.Control
@@ -49,6 +35,7 @@ function UCSBOrganizationForm({
               message: "Max length 30 characters",
             },
           })}
+          disabled={Boolean(initialContents?.orgCode)}
         />
         <Form.Control.Feedback type="invalid">
           {errors.orgCode?.message}
@@ -92,14 +79,14 @@ function UCSBOrganizationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">inactive</Form.Label>
         <Form.Check
-          data-testid="UCSBOrganizationForm-inactive"
+          data-testid={testIdPrefix + "-inactive"}
           id="inactive"
           type="checkbox"
-          isInvalid={Boolean(errors.done)}
-          {...register("done")}
+          isInvalid={Boolean(errors.inactive)}
+          {...register("inactive")}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.done?.message}
+          {errors.inactive?.message}
         </Form.Control.Feedback>
       </Form.Group>
 

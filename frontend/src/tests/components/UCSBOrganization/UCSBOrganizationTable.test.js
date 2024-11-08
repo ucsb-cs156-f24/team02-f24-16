@@ -278,7 +278,7 @@ describe("UCSBOrganizationTable tests", () => {
 
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/organizations/edit/SKY"),
+      expect(mockedNavigate).toHaveBeenCalledWith("/ucsborganization/edit/SKY"),
     );
   });
 
@@ -288,7 +288,7 @@ describe("UCSBOrganizationTable tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
-      .onDelete("/api/organizations")
+      .onDelete("/api/ucsborganization")
       .reply(200, { message: "Organization deleted" });
 
     // act - render the component
