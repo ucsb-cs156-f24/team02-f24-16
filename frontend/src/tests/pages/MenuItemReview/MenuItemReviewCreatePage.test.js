@@ -107,7 +107,9 @@ describe("MenuItemReviewCreatePage tests", () => {
     fireEvent.change(dateReviewedField, {
       target: { value: "2022-02-02T00:00" },
     });
-    fireEvent.change(reviewerEmailField, { target: { value: "xyz@gmail.com" } });
+    fireEvent.change(reviewerEmailField, {
+      target: { value: "xyz@gmail.com" },
+    });
     fireEvent.change(commentsField, { target: { value: "Great" } });
 
     expect(submitButton).toBeInTheDocument();
