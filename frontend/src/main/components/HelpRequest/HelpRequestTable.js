@@ -31,7 +31,6 @@ export default function HelpRequestTable({ requests, currentUser }) {
   };
 
   const columns = [
-
     /*
         Variables / required columns!
         ______________________________
@@ -64,15 +63,15 @@ export default function HelpRequestTable({ requests, currentUser }) {
       accessor: "requestTime",
     },
     {
-        Header: "Explanation",
-        accessor: "explanation",
+      Header: "Explanation",
+      accessor: "explanation",
     },
     {
-        Header: "Handled",
-        accessor: "solved",
-        // Credits to Jayden for the code here! 
-        // Renders a checkmark box for whether or not the help request has been solved.
-        Cell: ({ value }) => (value ? "✅" : "❌"),
+      Header: "Handled",
+      accessor: "solved",
+      // Credits to Jayden for the code here!
+      // Renders a checkmark box for whether or not the help request has been solved.
+      Cell: ({ value }) => (value ? "✅" : "❌"),
     },
   ];
 
@@ -85,5 +84,7 @@ export default function HelpRequestTable({ requests, currentUser }) {
     );
   }
 
-  return <OurTable data={requests} columns={columns} testid={"HelpRequestTable"} />;
+  return (
+    <OurTable data={requests} columns={columns} testid={"HelpRequestTable"} />
+  );
 }

@@ -28,7 +28,7 @@ function HelpRequestForm({
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
 
-   // Stryker disable Regex
+  // Stryker disable Regex
   //  const email_regex =
   //  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // Stryker restore Regex
@@ -66,7 +66,9 @@ function HelpRequestForm({
 
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="requestTime">Request Time (iso format)</Form.Label>
+            <Form.Label htmlFor="requestTime">
+              Request Time (iso format)
+            </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-requestTime"
               id="requestTime"
@@ -127,7 +129,9 @@ function HelpRequestForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="tableOrBreakoutRoom">Table or Breakout Room Number</Form.Label>
+            <Form.Label htmlFor="tableOrBreakoutRoom">
+              Table or Breakout Room Number
+            </Form.Label>
             <Form.Control
               data-testid="HelpRequestForm-tableOrBreakoutRoom"
               id="tableOrBreakoutRoom"
@@ -168,12 +172,12 @@ function HelpRequestForm({
         <Col>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="solved">Handled</Form.Label>
-            <Form.Select 
+            <Form.Select
               data-testid="HelpRequestForm-solved"
               id="solved"
               isInvalid={Boolean(errors.solved)}
               {...register("solved")}
-            > 
+            >
               <option value="true">Solved</option>
               <option value="false">Not Solved</option>
             </Form.Select>

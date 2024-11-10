@@ -65,10 +65,16 @@ describe("HelpRequestForm tests", () => {
     fireEvent.click(submitButton);
 
     await screen.findByText(/Request time is required./);
-    expect(screen.getByText(/Requester email is required./)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Requester email is required./),
+    ).toBeInTheDocument();
     expect(screen.getByText(/Team ID is required./)).toBeInTheDocument();
-    expect(screen.getByText(/Table or breakout room number is required./)).toBeInTheDocument();
-    expect(screen.getByText(/Explanation of request is required./)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Table or breakout room number is required./),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Explanation of request is required./),
+    ).toBeInTheDocument();
   });
 
   test("No Error messages on good input", async () => {
@@ -79,19 +85,29 @@ describe("HelpRequestForm tests", () => {
         <HelpRequestForm submitAction={mockSubmitAction} />
       </Router>,
     );
-    await screen.findByTestId("HelpRequestForm-requestTime")
+    await screen.findByTestId("HelpRequestForm-requestTime");
 
-    const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");;
-    const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+    const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+    const requesterEmailField = screen.getByTestId(
+      "HelpRequestForm-requesterEmail",
+    );
     const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
-    const tableOrBreakoutRoomField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
+    const tableOrBreakoutRoomField = screen.getByTestId(
+      "HelpRequestForm-tableOrBreakoutRoom",
+    );
     const explanationField = screen.getByTestId("HelpRequestForm-explanation");
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
     fireEvent.change(teamIdField, { target: { value: "F24-04" } });
-    fireEvent.change(requesterEmailField, { target: { value: "mock-user04@icloud.com" } });
-    fireEvent.change(tableOrBreakoutRoomField, { target: { value: "Table_04" } });
-    fireEvent.change(explanationField, { target: { value: "Needs_help_with_team100" } });
+    fireEvent.change(requesterEmailField, {
+      target: { value: "mock-user04@icloud.com" },
+    });
+    fireEvent.change(tableOrBreakoutRoomField, {
+      target: { value: "Table_04" },
+    });
+    fireEvent.change(explanationField, {
+      target: { value: "Needs_help_with_team100" },
+    });
     fireEvent.change(requestTimeField, {
       target: { value: "2024-01-10T12:00" },
     });

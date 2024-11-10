@@ -19,9 +19,9 @@ describe("UserTable tests", () => {
 
   test("Checkmark / X for Handled column shows up as expected", async () => {
     const currentUser = currentUserFixtures.adminUser;
-    
+
     // act - render the component
-    
+
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
@@ -47,11 +47,13 @@ describe("UserTable tests", () => {
       expect(
         screen.getByTestId("HelpRequestTable-cell-row-0-col-solved"),
       ).toHaveTextContent("✅");
+    });
 
+    await waitFor(() => {
       expect(
-        screen.getByTestId("HelpRequestTable-cell-row-1-col-solved"),
+        screen.getByTestId("HelpRequestTable-cell-row-0-col-solved"),
       ).toHaveTextContent("❌");
-    })
+    });
   });
 
   test("Has the expected column headers and content for ordinary user", () => {
@@ -68,8 +70,24 @@ describe("UserTable tests", () => {
       </QueryClientProvider>,
     );
 
-    const expectedHeaders = ["id", "Request Time", "Requester Email", "Team ID", "Table or Breakout Room Number", "Explanation", "Handled"];
-    const expectedFields = ["id", "requestTime", "requesterEmail", "teamId", "tableOrBreakoutRoom", "explanation", "solved"];
+    const expectedHeaders = [
+      "id",
+      "Request Time",
+      "Requester Email",
+      "Team ID",
+      "Table or Breakout Room Number",
+      "Explanation",
+      "Handled",
+    ];
+    const expectedFields = [
+      "id",
+      "requestTime",
+      "requesterEmail",
+      "teamId",
+      "tableOrBreakoutRoom",
+      "explanation",
+      "solved",
+    ];
     const testId = "HelpRequestTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -114,8 +132,24 @@ describe("UserTable tests", () => {
       </QueryClientProvider>,
     );
 
-    const expectedHeaders = ["id", "Request Time", "Requester Email", "Team ID", "Table or Breakout Room Number", "Explanation", "Handled"];
-    const expectedFields = ["id", "requestTime", "requesterEmail", "teamId", "tableOrBreakoutRoom", "explanation", "solved"];
+    const expectedHeaders = [
+      "id",
+      "Request Time",
+      "Requester Email",
+      "Team ID",
+      "Table or Breakout Room Number",
+      "Explanation",
+      "Handled",
+    ];
+    const expectedFields = [
+      "id",
+      "requestTime",
+      "requesterEmail",
+      "teamId",
+      "tableOrBreakoutRoom",
+      "explanation",
+      "solved",
+    ];
     const testId = "HelpRequestTable";
 
     expectedHeaders.forEach((headerText) => {
