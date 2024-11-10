@@ -21,9 +21,16 @@ function HelpRequestForm({
   // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
   // Note that even this complex regex may still need some tweaks
 
+  // email regex from ; https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+
   // Stryker disable Regex
   const isodate_regex =
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  // Stryker restore Regex
+
+   // Stryker disable Regex
+   const email_regex =
+   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // Stryker restore Regex
 
   /*
@@ -88,10 +95,13 @@ function HelpRequestForm({
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
                 required: "Requester email is required.",
+                pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
               {errors.requesterEmail?.message}
+              {errors.requesterEmail?.type === "pattern" &&
+                "Requester email must be in email format <email header>@<domain>."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -164,13 +174,15 @@ function HelpRequestForm({
             <Form.Select 
               data-testid="HelpRequestForm-solved"
               id="solved"
-              {...register("solved", {
-                setValueAs: (solved) => Boolean(solved)
-              })}
+              isInvalid={Boolean(errors.solved)}
+              {...register("solved")}
             > 
-              <option value={true}>Solved</option>
-              <option value={false}>Not Solved</option>
+              <option value="true">Solved</option>
+              <option value="false">Not Solved</option>
             </Form.Select>
+            <Form.Control.Feedback type="invalid">
+              {errors.solved?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>

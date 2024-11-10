@@ -37,21 +37,21 @@ describe("HelpRequestForm tests", () => {
     expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
   });
 
-  // test("Correct Error messages on bad input", async () => {
-  //   render(
-  //     <Router>
-  //       <HelpRequestForm />
-  //     </Router>,
-  //   );
-  //   await screen.findByTestId("HelpRequestForm-requestTime");
-  //   const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
-  //   const submitButton = screen.getByTestId("HelpRequestForm-submit");
+  test("Correct Error messages on bad input", async () => {
+    render(
+      <Router>
+        <HelpRequestForm />
+      </Router>,
+    );
+    await screen.findByTestId("HelpRequestForm-requesterEmail");
+    const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+    const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
-  //   fireEvent.change(requestTimeField, { target: { value: "bad-input" } });
-  //   fireEvent.click(submitButton);
+    fireEvent.change(requesterEmailField, { target: { value: "bad-input" } });
+    fireEvent.click(submitButton);
 
-  //   await screen.findByText(/requestTime must be in ISO format/);
-  // });
+    await screen.findByText(/Requester email must be in email format <email header>@<domain>./);
+  });
 
   test("Correct Error messsages on missing input", async () => {
     render(
@@ -99,9 +99,9 @@ describe("HelpRequestForm tests", () => {
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
-    // expect(
-    //   screen.queryByText(/requestTime must be in ISO Format ; MM:DD::YYYYTXX:YY:ZZ/),
-    // ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/Request time must be in ISO-Date Format./),
+    ).not.toBeInTheDocument();
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {

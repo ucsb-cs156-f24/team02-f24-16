@@ -25,7 +25,7 @@ const helpRequestFixtures = {
       tableOrBreakoutRoom: "Table_01",
       requestTime: "2003-04-20T06:09:00",
       explanation: "Needs_help_with_team01",
-      solved: true,
+      solved: false,
     },
     {
       id: 3,
