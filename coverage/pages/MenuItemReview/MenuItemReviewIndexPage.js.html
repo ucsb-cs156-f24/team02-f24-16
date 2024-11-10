@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/UCSBDates/UCSBDatesIndexPage.js</title>
+    <title>Code coverage report for pages/MenuItemReview/MenuItemReviewIndexPage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/UCSBDates</a> UCSBDatesIndexPage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/MenuItemReview</a> MenuItemReviewIndexPage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -159,11 +159,11 @@
 import { useBackend } from "main/utils/useBackend";
 &nbsp;
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import UCSBDatesTable from "main/components/UCSBDates/UCSBDatesTable";
+import MenuItemReviewTable from "main/components/MenuItemReview/MenuItemReviewTable";
 import { Button } from "react-bootstrap";
 import { useCurrentUser, hasRole } from "main/utils/currentUser";
 &nbsp;
-export default function UCSBDatesIndexPage() {
+export default function MenuItemReviewIndexPage() {
   const currentUser = useCurrentUser();
 &nbsp;
   const createButton = () =&gt; {
@@ -171,10 +171,10 @@ export default function UCSBDatesIndexPage() {
       return (
         &lt;Button
           variant="primary"
-          href="/ucsbdates/create"
+          href="/MENU_ITEM_REVIEW/create"
           style={{ float: "right" }}
         &gt;
-          Create UCSBDate
+          Create MenuItemReview
         &lt;/Button&gt;
       );
     }
@@ -186,8 +186,8 @@ export default function UCSBDatesIndexPage() {
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/ucsbdates/all"],
-    { method: "GET", url: "/api/ucsbdates/all" },
+    ["/api/MENU_ITEM_REVIEW/all"],
+    { method: "GET", url: "/api/MENU_ITEM_REVIEW/all" },
     [],
   );
 &nbsp;
@@ -195,8 +195,8 @@ export default function UCSBDatesIndexPage() {
     &lt;BasicLayout&gt;
       &lt;div className="pt-2"&gt;
         {createButton()}
-        &lt;h1&gt;UCSBDates&lt;/h1&gt;
-        &lt;UCSBDatesTable dates={dates} currentUser={currentUser} /&gt;
+        &lt;h1&gt;MenuItemReview&lt;/h1&gt;
+        &lt;MenuItemReviewTable dates={dates} currentUser={currentUser} /&gt;
       &lt;/div&gt;
     &lt;/BasicLayout&gt;
   );
