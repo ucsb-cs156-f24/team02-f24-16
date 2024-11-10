@@ -17,6 +17,43 @@ jest.mock("react-router-dom", () => ({
 describe("UserTable tests", () => {
   const queryClient = new QueryClient();
 
+  test("Checkmark / X for Handled column shows up as expected", async () => {
+    const currentUser = currentUserFixtures.adminUser;
+    
+    // act - render the component
+    
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestTable
+            requests={helpRequestFixtures.threeRequests}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    // assert - check that the expected content is rendered
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId(`HelpRequestTable-cell-row-0-col-id`),
+      ).toHaveTextContent("1");
+    });
+
+    // assert - check that the checkmarks and X's are available
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId("HelpRequestTable-cell-row-0-col-solved"),
+      ).toHaveTextContent("✅");
+
+      expect(
+        screen.getByTestId("HelpRequestTable-cell-row-1-col-solved"),
+      ).toHaveTextContent("❌");
+    })
+  });
+
   test("Has the expected column headers and content for ordinary user", () => {
     const currentUser = currentUserFixtures.userOnly;
 
