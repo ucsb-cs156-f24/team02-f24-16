@@ -9,7 +9,7 @@ export default function ArticlesEditPage({ storybook = false }) {
   let { id } = useParams();
 
   const {
-    data: article,
+    data: articles,
     _error,
     _status,
   } = useBackend(
@@ -26,7 +26,7 @@ export default function ArticlesEditPage({ storybook = false }) {
   );
 
   const objectToAxiosPutParams = (article) => ({
-    url: "/api/articles/put",
+    url: "/api/articles",
     method: "PUT",
     params: {
       id: article.id,
@@ -41,7 +41,9 @@ export default function ArticlesEditPage({ storybook = false }) {
   });
 
   const onSuccess = (article) => {
-    toast(`Article updated - id: ${article.id} title: ${article.title}`);
+    toast(
+      `Article updated - id: ${article.id} title: ${article.title} url: ${article.url} explanation: ${article.explanation} email: ${article.email} dateAdded: ${article.dateAdded}`,
+    );
   };
 
   const mutation = useBackendMutation(
@@ -65,9 +67,9 @@ export default function ArticlesEditPage({ storybook = false }) {
     <BasicLayout>
       <div className="pt-2">
         <h1>Edit Article</h1>
-        {article && (
+        {articles && (
           <ArticleForm
-            initialContents={article}
+            initialContents={articles}
             submitAction={onSubmit}
             buttonLabel="Update"
           />

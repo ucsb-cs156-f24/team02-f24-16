@@ -121,7 +121,7 @@ describe("ArticlesEditPage tests", () => {
       dateAdded: "2022-02-02T00:00",
     });
 
-    axiosMock.onPut("/api/articles/put").reply(200, {
+    axiosMock.onPut("/api/articles").reply(200, {
       id: 42,
       title: "Updated Article",
       url: "http://newexample.com",
@@ -159,7 +159,7 @@ describe("ArticlesEditPage tests", () => {
 
     await waitFor(() => expect(mockToast).toBeCalled());
     expect(mockToast).toBeCalledWith(
-      "Article updated - id: 42 title: Updated Article",
+      "Article updated - id: 42 title: Updated Article url: http://newexample.com explanation: Updated explanation email: updated@example.com dateAdded: 2023-03-03T00:00",
     );
     expect(mockNavigate).toBeCalledWith({ to: "/articles" });
 
