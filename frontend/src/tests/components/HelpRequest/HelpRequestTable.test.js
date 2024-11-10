@@ -51,7 +51,7 @@ describe("UserTable tests", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByTestId("HelpRequestTable-cell-row-0-col-solved"),
+        screen.getByTestId("HelpRequestTable-cell-row-1-col-solved"),
       ).toHaveTextContent("❌");
     });
   });
