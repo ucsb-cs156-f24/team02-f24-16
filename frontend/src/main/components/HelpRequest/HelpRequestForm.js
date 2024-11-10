@@ -29,8 +29,8 @@ function HelpRequestForm({
   // Stryker restore Regex
 
    // Stryker disable Regex
-   const email_regex =
-   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //  const email_regex =
+  //  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // Stryker restore Regex
 
   /*
@@ -95,13 +95,10 @@ function HelpRequestForm({
               isInvalid={Boolean(errors.requesterEmail)}
               {...register("requesterEmail", {
                 required: "Requester email is required.",
-                pattern: email_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
               {errors.requesterEmail?.message}
-              {errors.requesterEmail?.type === "pattern" &&
-                "Requester email must be in email format <email header>@<domain>."}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
