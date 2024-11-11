@@ -37,21 +37,27 @@ describe("HelpRequestForm tests", () => {
     expect(screen.getByTestId(/HelpRequestForm-id/)).toHaveValue("1");
   });
 
-  // test("Correct Error messages on bad input", async () => {
-  //   render(
-  //     <Router>
-  //       <HelpRequestForm />
-  //     </Router>,
-  //   );
-  //   await screen.findByTestId("HelpRequestForm-requesterEmail");
-  //   const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
-  //   const submitButton = screen.getByTestId("HelpRequestForm-submit");
+  test("Correct Error messages on bad input", async () => {
+    render(
+      <Router>
+        <HelpRequestForm />
+      </Router>,
+    );
+    await screen.findByTestId("HelpRequestForm-requesterEmail");
+    const requesterEmailField = screen.getByTestId(
+      "HelpRequestForm-requesterEmail",
+    );
+    const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
-  //   fireEvent.change(requesterEmailField, { target: { value: "bad-input" } });
-  //   fireEvent.click(submitButton);
+    fireEvent.change(requesterEmailField, {
+      target: { value: "badinput@ohno.@what.com" },
+    });
+    fireEvent.click(submitButton);
 
-  //   await screen.findByText(/Requester email must be in email format <email header>@<domain>./);
-  // });
+    await screen.findByText(
+      /Requester email must be in email format <email header>@<domain>./,
+    );
+  });
 
   test("Correct Error messsages on missing input", async () => {
     render(
@@ -98,7 +104,9 @@ describe("HelpRequestForm tests", () => {
     const explanationField = screen.getByTestId("HelpRequestForm-explanation");
     const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
-    fireEvent.change(teamIdField, { target: { value: "F24-04" } });
+    fireEvent.change(teamIdField, {
+      target: { value: "F24-04" },
+    });
     fireEvent.change(requesterEmailField, {
       target: { value: "mock-user04@icloud.com" },
     });
@@ -116,7 +124,27 @@ describe("HelpRequestForm tests", () => {
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
     expect(
-      screen.queryByText(/Request time must be in ISO-Date Format./),
+      screen.queryByText(/Request time is required./),
+    ).not.toBeInTheDocument();
+
+    expect(
+      screen.queryByText(/Request email is required./),
+    ).not.toBeInTheDocument();
+
+    expect(
+      screen.queryByText(
+        /Requester email must be in email format <email header>@<domain>./,
+      ),
+    ).not.toBeInTheDocument();
+
+    expect(screen.queryByText(/Team ID is required./)).not.toBeInTheDocument();
+
+    expect(
+      screen.queryByText(/Table or breakout room number is required./),
+    ).not.toBeInTheDocument();
+
+    expect(
+      screen.queryByText(/Explanation of request is required./),
     ).not.toBeInTheDocument();
   });
 
