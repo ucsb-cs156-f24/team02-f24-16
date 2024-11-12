@@ -196,7 +196,7 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
 
                 when(menuItemReviewRepository.save(eq(review_1))).thenReturn(review_1);
 
-                // act  (DOUBT HERE)
+                // act  
                 MvcResult response = mockMvc.perform(
                                 post("/api/menuitemreview/post")
                                     .param("itemId", "2")
