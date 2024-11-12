@@ -167,7 +167,7 @@ describe("UserTable tests", () => {
     fireEvent.click(editButton);
 
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/MENUITEMREVIEW/edit/1"),
+      expect(mockedNavigate).toHaveBeenCalledWith("/menuitemreview/edit/1"),
     );
   });
 
@@ -177,7 +177,7 @@ describe("UserTable tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
     axiosMock
-      .onDelete("/api/MENU_ITEM_REVIEW")
+      .onDelete("/api/menuitemreview")
       .reply(200, { message: "Review deleted" });
 
     // act - render the component

@@ -14,7 +14,7 @@ export default function MenuItemReviewIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/MENU_ITEM_REVIEW/create"
+          href="/menuitemreview/create"
           style={{ float: "right" }}
         >
           Create MenuItemReview
@@ -29,8 +29,8 @@ export default function MenuItemReviewIndexPage() {
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/MENU_ITEM_REVIEW/all"],
-    { method: "GET", url: "/api/MENU_ITEM_REVIEW/all" },
+    ["/api/menuitemreview/all"],
+    { method: "GET", url: "/api/menuitemreview/all" },
     [],
   );
 
