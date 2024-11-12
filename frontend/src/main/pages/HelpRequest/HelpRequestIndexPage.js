@@ -2,11 +2,11 @@ import React from "react";
 import { useBackend } from "main/utils/useBackend";
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import MenuItemReviewTable from "main/components/MenuItemReview/MenuItemReviewTable";
+import HelpRequestTable from "main/components/HelpRequest/HelpRequestTable";
 import { Button } from "react-bootstrap";
 import { useCurrentUser, hasRole } from "main/utils/currentUser";
 
-export default function MenuItemReviewIndexPage() {
+export default function HelpRequestIndexPage() {
   const currentUser = useCurrentUser();
 
   const createButton = () => {
@@ -14,23 +14,23 @@ export default function MenuItemReviewIndexPage() {
       return (
         <Button
           variant="primary"
-          href="/menuitemreview/create"
+          href="/helprequest/create"
           style={{ float: "right" }}
         >
-          Create MenuItemReview
+          Create Help Request
         </Button>
       );
     }
   };
 
   const {
-    data: dates,
+    data: requests,
     error: _error,
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/menuitemreview/all"],
-    { method: "GET", url: "/api/menuitemreview/all" },
+    ["/api/helprequest/all"],
+    { method: "GET", url: "/api/helprequest/all" },
     [],
   );
 
@@ -38,8 +38,8 @@ export default function MenuItemReviewIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         {createButton()}
-        <h1>MenuItemReview</h1>
-        <MenuItemReviewTable dates={dates} currentUser={currentUser} />
+        <h1>HelpRequest</h1>
+        <HelpRequestTable requests={requests} currentUser={currentUser} />
       </div>
     </BasicLayout>
   );
