@@ -26,7 +26,7 @@ Empty.parameters = {
         status: 200,
       });
     }),
-    http.get("/api/menu_item_review/all", () => {
+    http.get("/api/menuitemreview/all", () => {
       return HttpResponse.json([], { status: 200 });
     }),
   ],
@@ -42,7 +42,7 @@ ThreeItemsOrdinaryUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/menu_item_review/all", () => {
+    http.get("/api/menuitemreview/all", () => {
       return HttpResponse.json(menuItemReviewFixtures.threeMenuItemReviews);
     }),
   ],
@@ -58,10 +58,10 @@ ThreeItemsAdminUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/menu_item_review/all", () => {
+    http.get("/api/menuitemreview/all", () => {
       return HttpResponse.json(menuItemReviewFixtures.threeMenuItemReviews);
     }),
-    http.delete("/api/menu_item_review", () => {
+    http.delete("/api/menuitemreview", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],

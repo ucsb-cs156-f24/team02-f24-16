@@ -25,7 +25,7 @@ Default.parameters = {
         status: 200,
       });
     }),
-    http.post("/api/menu_item_review/post", () => {
+    http.post("/api/menuitemreview/post", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],

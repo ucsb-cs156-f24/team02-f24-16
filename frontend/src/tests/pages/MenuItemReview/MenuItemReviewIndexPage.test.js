@@ -51,7 +51,7 @@ describe("MenuItemReviewIndexPage tests", () => {
     // arrange
     setupAdminUser();
     const queryClient = new QueryClient();
-    axiosMock.onGet("/api/menu_item_review/all").reply(200, []);
+    axiosMock.onGet("/api/menuitemreview/all").reply(200, []);
 
     // act
     render(
@@ -67,7 +67,7 @@ describe("MenuItemReviewIndexPage tests", () => {
       expect(screen.getByText(/Create MenuItemReview/)).toBeInTheDocument();
     });
     const button = screen.getByText(/Create MenuItemReview/);
-    expect(button).toHaveAttribute("href", "/menu_item_review/create");
+    expect(button).toHaveAttribute("href", "/menuitemreview/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
@@ -76,7 +76,7 @@ describe("MenuItemReviewIndexPage tests", () => {
     setupUserOnly();
     const queryClient = new QueryClient();
     axiosMock
-      .onGet("/api/menu_item_review/all")
+      .onGet("/api/menuitemreview/all")
       .reply(200, menuItemReviewFixtures.threeMenuItemReviews);
 
     // act
@@ -109,7 +109,7 @@ describe("MenuItemReviewIndexPage tests", () => {
     // arrange
     setupUserOnly();
     const queryClient = new QueryClient();
-    axiosMock.onGet("/api/menu_item_id/all").timeout();
+    axiosMock.onGet("/api/menuitemid/all").timeout();
     const restoreConsole = mockConsole();
 
     // act
@@ -128,7 +128,7 @@ describe("MenuItemReviewIndexPage tests", () => {
 
     const errorMessage = console.error.mock.calls[0][0];
     expect(errorMessage).toMatch(
-      "Error communicating with backend via GET on /api/menu_item_review/all",
+      "Error communicating with backend via GET on /api/menuitemreview/all",
     );
     restoreConsole();
 
@@ -142,10 +142,10 @@ describe("MenuItemReviewIndexPage tests", () => {
     setupAdminUser();
     const queryClient = new QueryClient();
     axiosMock
-      .onGet("/api/menu_item_review/all")
+      .onGet("/api/menuitemreview/all")
       .reply(200, menuItemReviewFixtures.threeMenuItemReviews);
     axiosMock
-      .onDelete("/api/menu_item_review")
+      .onDelete("/api/menuitemreview")
       .reply(200, "MenuItemReview with id 1 was deleted");
 
     // act
