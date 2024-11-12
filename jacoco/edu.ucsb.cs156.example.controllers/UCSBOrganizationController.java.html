@@ -113,14 +113,13 @@ import jakarta.validation.Valid;
 <span class="fc" id="L113">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span>
 
 
-<span class="fc" id="L116">        organizations.setOrgCode(incoming.getOrgCode());  </span>
-<span class="fc" id="L117">        organizations.setOrgTranslationShort(incoming.getOrgTranslationShort());</span>
-<span class="fc" id="L118">        organizations.setOrgTranslation(incoming.getOrgTranslation());</span>
-<span class="fc" id="L119">        organizations.setInactive(incoming.getInactive());</span>
+<span class="fc" id="L116">        organizations.setOrgTranslationShort(incoming.getOrgTranslationShort());</span>
+<span class="fc" id="L117">        organizations.setOrgTranslation(incoming.getOrgTranslation());</span>
+<span class="fc" id="L118">        organizations.setInactive(incoming.getInactive());</span>
 
-<span class="fc" id="L121">        ucsbOrganizationRepository.save(organizations);</span>
+<span class="fc" id="L120">        ucsbOrganizationRepository.save(organizations);</span>
 
-<span class="fc" id="L123">        return organizations;</span>
+<span class="fc" id="L122">        return organizations;</span>
     }
 
     /**
@@ -133,11 +132,11 @@ import jakarta.validation.Valid;
     @DeleteMapping(&quot;&quot;)
     public Object deleteOrganizations(
             @Parameter(name=&quot;orgCode&quot;) @RequestParam String orgCode) {
-<span class="fc" id="L136">        UCSBOrganization organizations = ucsbOrganizationRepository.findById(orgCode)</span>
-<span class="fc" id="L137">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span>
+<span class="fc" id="L135">        UCSBOrganization organizations = ucsbOrganizationRepository.findById(orgCode)</span>
+<span class="fc" id="L136">                .orElseThrow(() -&gt; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span>
 
-<span class="fc" id="L139">        ucsbOrganizationRepository.delete(organizations);</span>
-<span class="fc" id="L140">        return genericMessage(&quot;UCSBOrganization with id %s deleted&quot;.formatted(orgCode));</span>
+<span class="fc" id="L138">        ucsbOrganizationRepository.delete(organizations);</span>
+<span class="fc" id="L139">        return genericMessage(&quot;UCSBOrganization with id %s deleted&quot;.formatted(orgCode));</span>
     }
 
 
