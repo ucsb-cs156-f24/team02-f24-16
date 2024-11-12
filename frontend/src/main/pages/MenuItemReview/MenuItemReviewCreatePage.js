@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 export default function MenuItemReviewCreatePage({ storybook = false }) {
   const objectToAxiosParams = (menuItemReview) => ({
-    url: "/api/MENU_ITEM_REVIEW/post",
+    url: "/api/menuitemreview/post",
     method: "POST",
     params: {
       itemId: menuItemReview.itemId,
@@ -27,7 +27,7 @@ export default function MenuItemReviewCreatePage({ storybook = false }) {
     objectToAxiosParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    ["/api/MENU_ITEM_REVIEW/all"],
+    ["/api/menuitemreview/all"],
   );
 
   const { isSuccess } = mutation;
@@ -37,7 +37,7 @@ export default function MenuItemReviewCreatePage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/MENU_ITEM_REVIEW" />;
+    return <Navigate to="/menuitemreview" />;
   }
 
   return (

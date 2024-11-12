@@ -3,14 +3,14 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
-import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
+import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 
 export default {
-  title: "pages/MenuItemReview/MenuItemReviewCreatePage",
-  component: MenuItemReviewCreatePage,
+  title: "pages/HelpRequest/HelpRequestCreatePage",
+  component: HelpRequestCreatePage,
 };
 
-const Template = () => <MenuItemReviewCreatePage storybook={true} />;
+const Template = () => <HelpRequestCreatePage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -25,7 +25,7 @@ Default.parameters = {
         status: 200,
       });
     }),
-    http.post("/api/menuitemreview/post", () => {
+    http.post("/api/helprequest/post", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],
