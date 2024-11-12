@@ -89,7 +89,8 @@ describe("HelpRequestEditPage tests", () => {
         teamId: "f24-00",
         tableOrBreakoutRoom: "Room 00",
         requestTime: "1969-06-09T00:00",
-        explanation: "Could Table 00 get some help with ordering some WingStop?",
+        explanation:
+          "Could Table 00 get some help with ordering some WingStop?",
         solved: "false",
       });
       axiosMock.onPut("/api/helprequest").reply(200, {
@@ -98,7 +99,8 @@ describe("HelpRequestEditPage tests", () => {
         teamId: "f24-00",
         tableOrBreakoutRoom: "Room 00",
         requestTime: "1969-06-09T00:00",
-        explanation: "Running Chicks is much better than WingStop actually, can we get that instead?",
+        explanation:
+          "Running Chicks is much better than WingStop actually, can we get that instead?",
         solved: "true",
       });
     });
@@ -135,7 +137,9 @@ describe("HelpRequestEditPage tests", () => {
       const tableOrBreakoutRoomField = screen.getByTestId(
         "HelpRequestForm-tableOrBreakoutRoom",
       );
-      const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+      const requestTimeField = screen.getByTestId(
+        "HelpRequestForm-requestTime",
+      );
       const explanationTimeField = screen.getByTestId(
         "HelpRequestForm-explanation",
       );
@@ -147,7 +151,9 @@ describe("HelpRequestEditPage tests", () => {
       expect(teamIdField).toHaveValue("f24-00");
       expect(tableOrBreakoutRoomField).toHaveValue("Room 00");
       expect(requestTimeField).toHaveValue("1969-06-09T00:00");
-      expect(explanationTimeField).toHaveValue("Could Table 00 get some help with ordering some WingStop?");
+      expect(explanationTimeField).toHaveValue(
+        "Could Table 00 get some help with ordering some WingStop?",
+      );
       expect(solvedTimeField).toHaveValue("false");
       expect(submitButton).toBeInTheDocument();
     });
@@ -171,7 +177,9 @@ describe("HelpRequestEditPage tests", () => {
       const tableOrBreakoutRoomField = screen.getByTestId(
         "HelpRequestForm-tableOrBreakoutRoom",
       );
-      const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+      const requestTimeField = screen.getByTestId(
+        "HelpRequestForm-requestTime",
+      );
       const explanationTimeField = screen.getByTestId(
         "HelpRequestForm-explanation",
       );
@@ -183,18 +191,29 @@ describe("HelpRequestEditPage tests", () => {
       expect(teamIdField).toHaveValue("f24-00");
       expect(tableOrBreakoutRoomField).toHaveValue("Room 00");
       expect(requestTimeField).toHaveValue("1969-06-09T00:00");
-      expect(explanationTimeField).toHaveValue("Could Table 00 get some help with ordering some WingStop?");
+      expect(explanationTimeField).toHaveValue(
+        "Could Table 00 get some help with ordering some WingStop?",
+      );
       expect(solvedTimeField).toHaveValue("false");
 
       expect(submitButton).toBeInTheDocument();
 
-      fireEvent.change(requesterEmailField, { target: { value: "itaintjoever@gmail.com" } });
+      fireEvent.change(requesterEmailField, {
+        target: { value: "itaintjoever@gmail.com" },
+      });
       fireEvent.change(teamIdField, { target: { value: "f24-00" } });
       fireEvent.change(tableOrBreakoutRoomField, {
         target: { value: "Room 00" },
       });
-      fireEvent.change(requestTimeField, { target: { value: "1969-06-09T00:00" } });
-      fireEvent.change(explanationTimeField, { target: { value: "Running Chicks is much better than WingStop actually, can we get that instead?" } });
+      fireEvent.change(requestTimeField, {
+        target: { value: "1969-06-09T00:00" },
+      });
+      fireEvent.change(explanationTimeField, {
+        target: {
+          value:
+            "Running Chicks is much better than WingStop actually, can we get that instead?",
+        },
+      });
       fireEvent.change(solvedTimeField, {
         target: { value: "true" },
       });
@@ -214,7 +233,8 @@ describe("HelpRequestEditPage tests", () => {
           teamId: "f24-00",
           tableOrBreakoutRoom: "Room 00",
           requestTime: "1969-06-09T00:00",
-          explanation: "Running Chicks is much better than WingStop actually, can we get that instead?",
+          explanation:
+            "Running Chicks is much better than WingStop actually, can we get that instead?",
           solved: "true",
         }),
       ); // posted object
