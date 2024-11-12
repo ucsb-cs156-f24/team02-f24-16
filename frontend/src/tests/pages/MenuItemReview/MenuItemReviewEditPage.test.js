@@ -49,9 +49,7 @@ describe("MenuItemReviewEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock
-        .onGet("/api/menuitemreview", { params: { id: 17 } })
-        .timeout();
+      axiosMock.onGet("/api/menuitemreview", { params: { id: 17 } }).timeout();
     });
 
     const queryClient = new QueryClient();
