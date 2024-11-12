@@ -1,48 +1,49 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
+import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { Navigate } from "react-router-dom";
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function MenuItemReviewEditPage({ storybook = false }) {
+export default function HelpRequestEditPage({ storybook = false }) {
   let { id } = useParams();
 
   const {
-    data: menuItemReview,
+    data: helpRequest,
     _error,
     _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    [`/api/menuitemreview?id=${id}`],
+    [`/api/helprequest?id=${id}`],
     {
       // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
       method: "GET",
-      url: `/api/menuitemreview`,
+      url: `/api/helprequest`,
       params: {
         id,
       },
     },
   );
 
-  const objectToAxiosPutParams = (menuItemReview) => ({
-    url: "/api/menuitemreview",
+  const objectToAxiosPutParams = (helpRequest) => ({
+    url: "/api/helprequest",
     method: "PUT",
     params: {
-      id: menuItemReview.id,
+      id: helpRequest.id,
     },
     data: {
-      itemId: menuItemReview.itemId,
-      reviewerEmail: menuItemReview.reviewerEmail,
-      comments: menuItemReview.comments,
-      dateReviewed: menuItemReview.dateReviewed,
-      stars: menuItemReview.stars,
+      requesterEmail: helpRequest.requesterEmail,
+      teamId: helpRequest.teamId,
+      tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
+      requestTime: helpRequest.requestTime,
+      explanation: helpRequest.explanation,
+      solved: helpRequest.solved,
     },
   });
 
-  const onSuccess = (menuItemReview) => {
+  const onSuccess = (helpRequest) => {
     toast(
-      `MenuItemReview Updated - id: ${menuItemReview.id} itemId: ${menuItemReview.itemId}`,
+      `HelpRequest Updated - id: ${helpRequest.id} requesterEmail: ${helpRequest.requesterEmail}`,
     );
   };
 
@@ -50,7 +51,7 @@ export default function MenuItemReviewEditPage({ storybook = false }) {
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/menuitemreview?id=${id}`],
+    [`/api/helprequest?id=${id}`],
   );
 
   const { isSuccess } = mutation;
@@ -60,16 +61,16 @@ export default function MenuItemReviewEditPage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/menuitemreview" />;
+    return <Navigate to="/helprequest" />;
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit MenuItemReview</h1>
-        {menuItemReview && (
-          <MenuItemReviewForm
-            initialContents={menuItemReview}
+        <h1>Edit Help Request</h1>
+        {helpRequest && (
+          <HelpRequestForm
+            initialContents={helpRequest}
             submitAction={onSubmit}
             buttonLabel="Update"
           />
