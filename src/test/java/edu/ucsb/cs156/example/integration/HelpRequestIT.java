@@ -64,7 +64,7 @@ public class HelpRequestIT {
         public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
                 // arrange
 
-                // needs LocalDateTime for requestTime.
+                // needs LocalDateTime for requestTime
                 LocalDateTime reqTime = LocalDateTime.parse("2024-10-02T00:00:00");
 
                 HelpRequest helpRequest = HelpRequest.builder()
@@ -93,7 +93,7 @@ public class HelpRequestIT {
         public void an_admin_user_can_post_a_new_help_request() throws Exception {
                 // arrange
 
-                // needs LocalDateTime for requestTime.
+                // needs LocalDateTime for requestTime
                 LocalDateTime reqTime1 = LocalDateTime.parse("2024-10-02T00:00:00");
 
                 HelpRequest helpRequest1 = HelpRequest.builder()
