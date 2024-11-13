@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team02-f24-16
 owner: ucsb-cs156-f24
 repo_name: team02-f24-16
-pull_requests: []
+pull_requests: [{"author":{"id":"U_kgDOB3E0Rw","is_bot":false,"login":"ttnguyen908","name":"Tiffany Nguyen"},"headRefName":"IntegrationTests-HelpRequest-Tiffany","number":138,"title":"Integration test for HelpRequest implemented!","url":"https://github.com/ucsb-cs156-f24/team02-f24-16/pull/138"}]
